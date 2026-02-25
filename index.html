@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SIA KLBTransport — pārvākšanās, mēbeļu piegāde, atkritumu izvešana un krāvēju pakalpojumi Rīgā un visā Latvijā.">
+<title>KLB Transport — Pārvākšanās un transporta pakalpojumi Rīgā</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#ed1c24;
+  --red-d:#c0151b;
+  --dark:#111;
+  --mid:#444;
+  --gray:#777;
+  --light:#f5f5f5;
+  --white:#fff;
+  --border:#e8e8e8;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;color:var(--dark);font-size:17px;line-height:1.62;background:
+  radial-gradient(1200px 420px at 0% -8%, rgba(237,28,36,.04), transparent 70%),
+  radial-gradient(900px 360px at 100% 40%, rgba(10,10,10,.035), transparent 65%),
+  var(--white);
+  overflow-x:hidden;
+}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--red)}
+
+/* ── HEADER ── */
+#hdr{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  padding:0;
+  transition:background .3s,box-shadow .3s;
+  background:rgba(8,8,8,.72);
+  box-shadow:0 1px 24px rgba(0,0,0,.18);
+  backdrop-filter:blur(9px);
+}
+#hdr.on{
+  background:rgba(8,8,8,.95);
+  box-shadow:0 1px 28px rgba(0,0,0,.26);
+}
+.hdr-inner{
+  max-width:1160px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 40px;
+  transition:padding .3s;
+}
+#hdr.on .hdr-inner{padding:12px 40px}
+
+#logo{height:46px;display:block;transition:height .3s}
+#hdr.on #logo{height:38px}
+
+nav{display:flex;align-items:center;gap:4px}
+nav a{
+  position:relative;
+  font-size:15px;font-weight:600;
+  color:rgba(255,255,255,.86);
+  text-decoration:none;
+  padding:8px 12px;border-radius:7px;
+  border:1px solid transparent;
+  transition:color .2s,border-color .2s,background .2s;
+  margin:0 2px;
+}
+nav a::after{
+  content:'';position:absolute;left:12px;right:12px;bottom:5px;height:2px;
+  background:var(--red);transform:scaleX(0);transform-origin:center;
+  transition:transform .22s;
+}
+nav a:hover{color:#fff;background:rgba(255,255,255,.05)}
+nav a:hover::after,nav a.active::after{transform:scaleX(1)}
+nav a.active{border-color:rgba(237,28,36,.35);color:#fff;background:rgba(237,28,36,.12)}
+nav .nav-cta{
+  background:var(--red);border-color:var(--red);font-weight:700;
+}
+nav .nav-cta:hover{background:var(--red-d);border-color:var(--red-d)}
+nav .nav-cta::after{display:none}
+
+.lang-switch{
+  display:inline-flex;align-items:center;gap:3px;
+  padding:4px;border-radius:999px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  margin-left:10px;
+}
+.lang-btn{
+  border:none;background:transparent;color:rgba(255,255,255,.78);
+  font-size:11px;font-weight:800;letter-spacing:.06em;
+  padding:6px 8px;border-radius:999px;cursor:pointer;
+  transition:all .2s;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.lang-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.lang-btn.active{
+  color:#fff;background:var(--red);
+  box-shadow:0 4px 12px rgba(237,28,36,.35);
+}
+.lang-flag{
+  width:15px;height:15px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.3);
+  object-fit:cover;display:block;
+}
+
+.hdr-phone{
+  display:flex;align-items:center;gap:7px;
+  font-size:14px;font-weight:600;
+  color:#fff;text-decoration:none;
+  background:var(--red);
+  padding:9px 18px;border-radius:7px;
+  transition:background .2s;
+}
+.hdr-phone:hover{background:var(--red-d)}
+#hdr.on .hdr-phone{background:var(--red)}
+
+/* burger */
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:background .3s}
+
+#mnav{
+  display:none;flex-direction:column;
+  background:#111;border-top:1px solid rgba(255,255,255,.12);
+}
+#mnav a{
+  font-size:15px;font-weight:500;color:rgba(255,255,255,.85);
+  text-decoration:none;padding:13px 40px;
+  border-left:3px solid transparent;
+  transition:all .2s;
+}
+#mnav a:hover{color:#fff;border-left-color:var(--red);background:rgba(237,28,36,.13)}
+#mnav .mnav-phone{
+  margin:12px 40px 16px;
+  display:flex;align-items:center;gap:8px;
+  font-size:15px;font-weight:700;
+  color:var(--red);text-decoration:none;
+}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  background:#151515;
+}
+#hero::before{
+  content:'';position:absolute;inset:-120px -180px auto auto;
+  width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle, rgba(237,28,36,.32), rgba(237,28,36,0) 68%);
+  z-index:1;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(115deg, rgba(20,20,20,.88), rgba(44,44,44,.66)),
+    url('img/sadzives-tehnikas-vesana.jpg') center/cover no-repeat;
+  opacity:.7;
+  filter:grayscale(.35);
+}
+.hero-content{
+  position:relative;z-index:2;
+  max-width:1160px;margin:0 auto;
+  padding:112px 40px 76px;
+  width:100%;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:end;
+}
+.hero-main{max-width:720px}
+.hero-side{
+  justify-self:end;display:flex;flex-direction:column;gap:12px;min-width:300px;width:min(390px,100%);
+  align-self:center;
+  transform:translateY(-22px);
+}
+.hero-chip{
+  background:rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:12px;padding:13px 14px;
+}
+.hero-chip strong{display:block;font-size:14px;font-weight:700;color:#fff;margin-bottom:4px}
+.hero-chip span{font-size:12px;color:rgba(255,255,255,.72)}
+.hero-widget{
+  background:rgba(8,8,8,.62);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;padding:14px;
+  width:100%;
+  max-width:430px;
+  margin-inline:auto;
+}
+.hero-widget h3{font-size:15px;color:#fff;margin-bottom:10px}
+.hero-form{display:flex;flex-direction:column;gap:9px}
+.hf-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hf{
+  width:100%;padding:10px 11px;border-radius:8px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.08);color:#fff;font-size:13px;
+}
+.hf::placeholder{color:rgba(255,255,255,.65)}
+.hf option{color:#111}
+.hero-form select.hf{
+  appearance:none;
+  -webkit-appearance:none;
+  padding-right:42px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23e9e9e9' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+  background-size:14px;
+}
+.hf-btn{
+  border:none;border-radius:8px;padding:10px 12px;
+  background:var(--red);color:#fff;font-size:13px;font-weight:700;cursor:pointer;
+}
+.hf-msg{font-size:12px;color:#87d987;min-height:16px}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--red);
+  border:1px solid rgba(237,28,36,.4);
+  padding:5px 13px;border-radius:4px;
+  margin-bottom:24px;
+}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--red);border-radius:50%}
+h1{
+  font-size:clamp(40px,6vw,68px);
+  font-weight:800;line-height:1.05;
+  color:#fff;letter-spacing:-.025em;
+  margin-bottom:20px;
+  max-width:720px;
+}
+h1 em{color:var(--red);font-style:normal}
+.hero-lead{
+  font-size:21px;color:rgba(255,255,255,.82);
+  max-width:760px;margin-bottom:34px;line-height:1.55;
+}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:16px;font-weight:700;
+  padding:14px 28px;border-radius:10px;
+  text-decoration:none;transition:all .22s;cursor:pointer;border:none;
+  font-family:inherit;
+}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-d);transform:translateY(-1px)}
+.btn-ghost{
+  background:transparent;color:#fff;
+  border:1.5px solid rgba(255,255,255,.35);
+}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.07)}
+
+.hero-nums{
+  display:flex;gap:30px;flex-wrap:wrap;
+  margin-top:10px;
+  padding-top:36px;
+  position:relative;
+}
+.hero-nums::before{
+  content:'';
+  position:absolute;left:0;top:0;
+  width:min(760px,100%);height:2px;border-radius:999px;
+  background:
+    linear-gradient(90deg,
+      rgba(255,255,255,.06) 0%,
+      rgba(237,28,36,.58) 45%,
+      rgba(255,255,255,.14) 72%,
+      rgba(255,255,255,.04) 100%);
+  box-shadow:0 0 18px rgba(237,28,36,.22);
+}
+.hn-val{font-size:34px;font-weight:800;color:#fff;line-height:1}
+.hn-val span{color:var(--red)}
+.hn-lbl{font-size:12px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+
+/* ── SHARED ── */
+section{padding:66px 0}
+.wrap{max-width:1160px;margin:0 auto;padding:0 40px}
+.sec-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--red);margin-bottom:10px;
+}
+.sec-tag::before{content:'';width:16px;height:2px;background:var(--red)}
+h2{font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px}
+.sec-sub{font-size:16px;color:var(--gray);line-height:1.7;max-width:540px}
+.hl{
+  display:inline-block;
+  background:rgba(237,28,36,.1);
+  color:#ab1118;
+  padding:1px 8px;
+  border-radius:999px;
+  font-weight:700;
+}
+
+/* fade */
+.fd{opacity:0;transform:translateY(22px);transition:opacity .55s,transform .55s}
+.fd.in{opacity:1;transform:none}
+
+/* ── SERVICES ── */
+#svc{background:var(--light)}
+.svc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:2px;margin-top:34px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+}
+.svc{
+  background:#fff;padding:28px 24px;
+  transition:background .2s,border-color .2s;
+  position:relative;
+  border:1px solid transparent;
+}
+.svc::after{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--red);transform:scaleY(0);transform-origin:top;
+  transition:transform .28s;
+}
+.svc:hover{background:#fafafa;border-color:#f3c7ca}
+.svc:hover::after{transform:scaleY(1)}
+.svc-ico{
+  width:46px;height:46px;border-radius:9px;
+  background:rgba(237,28,36,.08);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:14px;color:var(--red);
+}
+.svc h3{font-size:15px;font-weight:700;margin-bottom:6px}
+.svc p{font-size:13px;color:var(--gray);line-height:1.6}
+.svc small{
+  display:inline-block;margin-top:12px;font-size:11px;font-weight:700;
+  color:#ab1118;background:rgba(237,28,36,.09);padding:4px 8px;border-radius:99px;
+}
+
+/* ── FLOW ── */
+#flow{
+  background:
+  linear-gradient(180deg, #101010 0%, #171717 100%);
+  color:#fff;
+  position:relative;
+}
+#flow::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+}
+.flow-head .sec-tag{color:#ff7880}
+.flow-head .sec-tag::before{background:#ff7880}
+.flow-head h2{color:#fff}
+.flow-head .sec-sub{color:rgba(255,255,255,.7)}
+.flow-grid{
+  margin-top:30px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;
+}
+.flow-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;padding:18px 16px;
+  backdrop-filter:blur(2px);
+  position:relative;
+  overflow:hidden;
+  transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease, background .28s ease;
+}
+.flow-card::after{
+  content:'';
+  position:absolute;inset:auto -30% -60% -30%;
+  height:70%;
+  background:radial-gradient(circle at center, rgba(237,28,36,.3), rgba(237,28,36,0) 65%);
+  opacity:0;transform:translateY(10px);
+  transition:opacity .28s ease, transform .28s ease;
+  pointer-events:none;
+}
+.flow-step{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:999px;
+  background:rgba(237,28,36,.2);color:#ffb3b7;font-size:12px;font-weight:800;margin-bottom:12px;
+  transition:transform .28s ease, background .28s ease, color .28s ease, box-shadow .28s ease;
+}
+.flow-card h3{font-size:15px;margin-bottom:7px}
+.flow-card p{font-size:13px;color:rgba(255,255,255,.7);line-height:1.55}
+.flow-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(237,28,36,.45);
+  box-shadow:0 16px 36px rgba(0,0,0,.35);
+  background:rgba(255,255,255,.06);
+}
+.flow-card:hover::after{opacity:1;transform:none}
+.flow-card:hover .flow-step{
+  transform:translateX(3px) scale(1.08);
+  background:rgba(237,28,36,.85);
+  color:#fff;
+  box-shadow:0 8px 20px rgba(237,28,36,.35);
+}
+
+/* ── PROOF ── */
+#proof{
+  background:
+  linear-gradient(140deg, #f4f4f4 0%, #efefef 45%, #fafafa 100%);
+}
+.proof-grid{
+  margin-top:30px;display:grid;grid-template-columns:1.1fr .9fr;gap:20px;
+}
+.proof-main{
+  border-radius:16px;padding:24px;background:#fff;border:1px solid #ececec;
+  transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+.proof-main:hover{
+  transform:translateY(-4px);
+  border-color:#e3d0d1;
+  box-shadow:0 14px 34px rgba(0,0,0,.08);
+}
+.proof-main h3{font-size:22px;margin-bottom:10px}
+.proof-main p{color:#555;line-height:1.7;margin-bottom:18px}
+.proof-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.proof-item{
+  background:#fbfbfb;border:1px solid #ededed;border-radius:10px;padding:12px;
+  transition:transform .24s ease, border-color .24s ease, box-shadow .24s ease, background .24s ease;
+}
+.proof-item:hover{
+  transform:translateY(-3px);
+  border-color:#f1c4c7;
+  box-shadow:0 10px 22px rgba(237,28,36,.12);
+  background:#fff;
+}
+.proof-item strong{display:block;font-size:14px;margin-bottom:4px}
+.proof-item span{font-size:12px;color:#666}
+.proof-side{display:grid;gap:10px}
+.proof-kpi{
+  border-radius:14px;padding:18px;background:#111;color:#fff;
+  position:relative;overflow:hidden;
+  transition:transform .28s ease, box-shadow .28s ease, filter .28s ease;
+}
+.proof-kpi:nth-child(2){background:#1f1f1f}
+.proof-kpi:nth-child(3){background:linear-gradient(145deg,#ed1c24,#a90f14)}
+.proof-kpi::after{
+  content:'';
+  position:absolute;inset:auto -35% -60% -35%;
+  height:85%;
+  background:radial-gradient(circle at center, rgba(255,255,255,.22), rgba(255,255,255,0) 66%);
+  opacity:0;transform:translateY(10px);
+  transition:opacity .28s ease, transform .28s ease;
+  pointer-events:none;
+}
+.proof-kpi:hover{
+  transform:translateY(-3px) scale(1.005);
+  box-shadow:0 16px 34px rgba(0,0,0,.25);
+  filter:saturate(1.1);
+}
+.proof-kpi:hover::after{opacity:1;transform:none}
+.proof-kpi strong{display:block;font-size:30px;line-height:1;font-weight:800}
+.proof-kpi span{font-size:12px;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.08em}
+
+/* ── WIDGETS ── */
+#widgets{background:#fff}
+.widgets-grid{
+  margin-top:30px;display:grid;grid-template-columns:1.15fr .85fr;gap:18px;
+}
+.calc-card,.faq-card,.stats-card{
+  border:1px solid #e9e9e9;border-radius:14px;background:#fff;
+}
+.calc-card{padding:20px}
+.calc-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.calc-head h3{font-size:20px}
+.calc-live{font-size:11px;font-weight:700;color:#ab1118;background:rgba(237,28,36,.1);padding:5px 8px;border-radius:999px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.calc-grid .fg{margin-bottom:0}
+.range-wrap{padding:12px;border:1px solid #ededed;border-radius:10px}
+.range-row{display:flex;justify-content:space-between;font-size:12px;color:#555;margin-bottom:6px}
+.range-wrap input{width:100%}
+.calc-out{
+  margin-top:12px;padding:14px;border-radius:12px;
+  background:linear-gradient(145deg,#111,#232323);color:#fff;
+}
+.calc-val{font-size:30px;font-weight:800;line-height:1}
+.calc-note{font-size:12px;color:rgba(255,255,255,.72);margin-top:5px}
+.widgets-right{display:grid;gap:12px}
+.stats-card{padding:16px;background:#fafafa}
+.stats-head{font-size:13px;font-weight:700;color:#333;margin-bottom:12px}
+.stat-line{display:flex;justify-content:space-between;font-size:12px;color:#555;margin-bottom:6px}
+.stat-bar{height:7px;background:#e7e7e7;border-radius:999px;overflow:hidden;margin-bottom:10px}
+.stat-fill{display:block;height:100%;background:linear-gradient(90deg,#ed1c24,#ff6268)}
+.faq-card{padding:14px}
+.faq-item{
+  border:1px solid #ececec;border-radius:10px;padding:10px 12px;background:#fff;
+}
+.faq-item + .faq-item{margin-top:8px}
+.faq-q{
+  width:100%;text-align:left;background:none;border:none;cursor:pointer;
+  font-size:14px;font-weight:700;color:#222;display:flex;justify-content:space-between;gap:8px;
+}
+.faq-a{font-size:13px;color:#666;line-height:1.6;max-height:0;overflow:hidden;transition:max-height .25s;padding-right:10px}
+.faq-item.open .faq-a{max-height:120px;margin-top:8px}
+.faq-item .sym{color:var(--red);font-weight:800}
+
+/* ── ABOUT ── */
+#about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-grid{gap:52px}
+.about-imgs{position:relative}
+.ab-main{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  border-radius:12px;display:block;
+}
+.ab-float{
+  position:absolute;bottom:-24px;right:-24px;
+  width:180px;aspect-ratio:1;object-fit:cover;
+  border-radius:10px;border:4px solid #fff;
+  box-shadow:0 12px 40px rgba(0,0,0,.15);
+}
+.ab-badge{
+  position:absolute;top:20px;left:-20px;
+  background:var(--red);color:#fff;
+  border-radius:10px;padding:14px 18px;text-align:center;
+  box-shadow:0 8px 24px rgba(237,28,36,.35);
+}
+.ab-num{font-size:34px;font-weight:800;line-height:1}
+.ab-txt{font-size:11px;font-weight:600;opacity:.85;letter-spacing:.04em}
+.about-body p{font-size:15px;color:var(--mid);line-height:1.75;margin-bottom:14px}
+.chk-list{list-style:none;margin:20px 0 28px;display:flex;flex-direction:column;gap:10px}
+.chk-list li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:14px;color:var(--mid);line-height:1.5;
+  transition:transform .24s ease,color .24s ease;
+}
+.chk-list li::before{
+  content:'';flex-shrink:0;
+  width:18px;height:18px;border-radius:50%;margin-top:1px;
+  background:rgba(237,28,36,.1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23ed1c24' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/10px no-repeat;
+  border:1.5px solid rgba(237,28,36,.2);
+  transition:transform .24s ease,box-shadow .24s ease,background-color .24s ease;
+}
+.chk-list li:hover{transform:translateX(6px);color:#202020}
+.chk-list li:hover::before{
+  transform:scale(1.08);
+  background-color:rgba(237,28,36,.2);
+  box-shadow:0 6px 16px rgba(237,28,36,.22);
+}
+
+/* ── WHY ── */
+#why{background:var(--light)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+.why-card{
+  background:#fff;border-radius:12px;padding:28px 24px;
+  border:1px solid var(--border);
+  transition:box-shadow .25s,transform .25s;
+}
+.why-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.1);transform:translateY(-3px)}
+.why-n{font-size:42px;font-weight:800;color:var(--red);opacity:.15;line-height:1;margin-bottom:12px}
+.why-card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.why-card p{font-size:14px;color:var(--gray);line-height:1.6}
+
+/* ── CONTACT ── */
+#contact{background:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:start}
+
+.ci{display:flex;align-items:flex-start;gap:14px;margin-bottom:24px}
+.ci-ico{
+  width:44px;height:44px;flex-shrink:0;border-radius:9px;
+  background:rgba(237,28,36,.08);border:1.5px solid rgba(237,28,36,.18);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--red);margin-top:2px;
+}
+.ci-lbl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray);margin-bottom:3px}
+.ci-val{font-size:15px;font-weight:600;color:var(--dark);text-decoration:none}
+.ci-val:hover{color:var(--red)}
+.ci-note{font-size:13px;color:var(--gray);margin-top:2px}
+
+.cform{background:var(--light);border:1px solid var(--border);border-radius:14px;padding:32px}
+.cform h3{font-size:20px;font-weight:700;margin-bottom:4px}
+.cform > p{font-size:13px;color:var(--gray);margin-bottom:22px}
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.fg label{font-size:12px;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:.04em}
+.fi{
+  width:100%;padding:11px 13px;
+  border:1.5px solid var(--border);border-radius:7px;
+  font-size:14px;color:var(--dark);background:#fff;
+  outline:none;font-family:inherit;
+  transition:border .2s,box-shadow .2s;
+}
+.fi:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(237,28,36,.08)}
+.fi::placeholder{color:#bbb}
+textarea.fi{min-height:90px;resize:vertical}
+select.fi{cursor:pointer}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.submit{
+  width:100%;padding:13px;
+  background:var(--red);color:#fff;
+  border:none;border-radius:8px;
+  font-size:14px;font-weight:700;
+  cursor:pointer;font-family:inherit;
+  transition:background .2s;margin-top:4px;
+}
+.submit:hover{background:var(--red-d)}
+#fmsg{text-align:center;font-size:13px;margin-top:10px;display:none}
+
+.divider{height:1px;background:var(--border);margin:24px 0}
+.rekviziti{font-size:13px;color:var(--gray);line-height:1.9}
+
+/* ── TESTIMONIALS ── */
+#testimonials{background:#fff}
+.t-head{max-width:760px}
+.t-grid{
+  margin-top:28px;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;
+}
+.t-card{
+  background:#fafafa;border:1px solid #ededed;border-radius:14px;padding:16px;
+  transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+}
+.t-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 14px 28px rgba(0,0,0,.08);
+  border-color:#f1c9cc;
+}
+.t-stars{color:#f2aa00;font-size:13px;letter-spacing:.12em;margin-bottom:8px}
+.t-text{font-size:14px;color:#444;line-height:1.6}
+.t-meta{margin-top:11px;font-size:12px;color:#7a7a7a}
+.t-note{
+  margin-top:14px;font-size:12px;color:#8b8b8b;
+  background:#f8f8f8;border:1px dashed #ddd;padding:10px 12px;border-radius:10px;
+}
+
+/* ── PARTNERS ── */
+#partners{background:var(--light);padding:48px 0}
+.p-label{text-align:center;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#aaa;margin-bottom:28px}
+.p-row{display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap}
+.p-row img{max-height:44px;max-width:130px;object-fit:contain;opacity:.4;filter:grayscale(1);transition:opacity .2s,filter .2s}
+.p-row img:hover{opacity:.85;filter:none}
+
+/* ── MAP ── */
+#map{height:380px;background:var(--light)}
+#map iframe{width:100%;height:100%;border:none;display:block}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);color:rgba(255,255,255,.5);padding:52px 0 28px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.foot-logo{height:36px;margin-bottom:14px}
+.foot-about{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:16px}
+.foot-social a{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:36px;height:36px;border-radius:7px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);
+  color:rgba(255,255,255,.45);text-decoration:none;
+  transition:all .2s;
+}
+.foot-social a:hover{background:var(--red);border-color:var(--red);color:#fff}
+.foot-col h4{font-size:12px;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+.foot-col a,.foot-col span{
+  display:block;font-size:13px;color:rgba(255,255,255,.4);
+  text-decoration:none;margin-bottom:9px;
+  transition:color .2s;
+}
+.foot-col a:hover{color:#fff}
+.foot-col .red{color:var(--red)}
+.foot-bottom{
+  border-top:1px solid rgba(255,255,255,.07);
+  padding-top:24px;display:flex;justify-content:space-between;
+  font-size:12px;color:rgba(255,255,255,.25);flex-wrap:wrap;gap:8px;
+}
+
+/* ── SCROLL TOP ── */
+#top{
+  position:fixed;bottom:24px;left:24px;
+  width:42px;height:42px;background:var(--red);color:#fff;
+  border:none;border-radius:8px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(237,28,36,.4);
+  opacity:0;pointer-events:none;transform:translateY(8px);
+  transition:opacity .3s,transform .3s;z-index:900;
+}
+#top.show{opacity:1;pointer-events:all;transform:none}
+#top:hover{background:var(--red-d)}
+
+/* ── COOKIE BANNER ── */
+#cookie{
+  position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1201;
+  width:min(430px,calc(100vw - 26px));
+  background:#101010;color:rgba(255,255,255,.85);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:14px;padding:16px;
+  box-shadow:0 18px 50px rgba(0,0,0,.28);
+  display:none;
+}
+#cookie-backdrop{
+  position:fixed;inset:0;z-index:1200;background:rgba(0,0,0,.35);display:none;
+}
+.cookie-row{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.cookie-text{font-size:13px;line-height:1.55}
+.cookie-btns{display:flex;gap:8px}
+.cookie-btn{
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:8px;padding:9px 12px;
+  background:transparent;color:#fff;font-size:12px;font-weight:600;cursor:pointer;
+}
+.cookie-btn.main{background:var(--red);border-color:var(--red)}
+.cookie-btn.main:hover{background:var(--red-d)}
+
+/* ── CHATBOT ── */
+#chat-toggle{
+  position:fixed;right:24px;bottom:24px;z-index:1010;
+  width:62px;height:62px;border:none;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(155deg,#ff1f2d,#9f0911);color:#fff;cursor:pointer;
+  box-shadow:0 14px 36px rgba(237,28,36,.45), inset 0 1px 0 rgba(255,255,255,.25);
+  border:1px solid rgba(255,255,255,.22);
+  animation:chatPulse 2.4s ease-in-out infinite;
+}
+#chat-toggle svg{display:block}
+#chatbox{
+  position:fixed;right:24px;bottom:96px;z-index:1010;
+  width:min(360px,calc(100vw - 28px));
+  border:1px solid rgba(255,255,255,.35);border-radius:16px;
+  background:rgba(255,255,255,.95);overflow:hidden;display:none;
+  box-shadow:0 24px 70px rgba(0,0,0,.28);
+  backdrop-filter:blur(8px);
+}
+.chat-hint{
+  position:fixed;right:96px;bottom:40px;z-index:1010;
+  display:inline-flex;align-items:center;
+  background:#0f1115;color:#fff;padding:9px 12px;border-radius:999px;
+  font-size:12px;font-weight:700;box-shadow:0 10px 26px rgba(0,0,0,.2);
+  border:1px solid rgba(255,255,255,.14);
+}
+@keyframes chatPulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.06)}
+}
+.chat-head{
+  background:linear-gradient(135deg,#090a0d,#151821);color:#fff;padding:12px 14px;font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.chat-head-main{display:flex;align-items:center;gap:10px}
+.chat-head-main strong{font-size:17px;line-height:1}
+.chat-head-main small{display:block;font-size:11px;color:rgba(255,255,255,.7);margin-top:2px}
+.chat-ai{
+  width:34px;height:34px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.26);
+  box-shadow:0 4px 10px rgba(0,0,0,.22);
+}
+#chat-close{background:none;border:none;color:#fff;cursor:pointer;font-size:26px;line-height:1}
+#chat-log{
+  height:240px;overflow:auto;padding:12px;
+  display:flex;flex-direction:column;gap:8px;background:#f7f7f7;
+}
+.msg{
+  max-width:85%;padding:9px 11px;border-radius:10px;font-size:13px;line-height:1.45;
+}
+.msg.bot{background:#fff;border:1px solid #ececec;color:#222}
+.msg.user{background:#111;color:#fff;align-self:flex-end}
+.chat-quick{
+  display:flex;flex-wrap:wrap;gap:7px;padding:10px 12px;background:#f7f7f7;border-top:1px solid #ececec;
+}
+.qchip{
+  border:1px solid #ddd;background:#fff;color:#333;
+  border-radius:999px;padding:7px 10px;font-size:12px;font-weight:600;cursor:pointer;
+  transition:all .2s;
+}
+.qchip:hover{border-color:#f2b9bd;color:#a80f16;background:#fff7f8}
+.qchip.hot{background:#12151d;color:#fff;border-color:#12151d}
+.qchip.hot:hover{background:#ed1c24;border-color:#ed1c24;color:#fff}
+.chat-input{display:flex;gap:8px;padding:12px;border-top:1px solid #eee}
+.chat-input input{
+  flex:1;padding:10px 11px;border:1px solid #ddd;border-radius:10px;font-size:13px;
+}
+.chat-input button{
+  border:none;border-radius:10px;padding:0 14px;background:var(--red);color:#fff;cursor:pointer;font-weight:700;
+}
+
+/* ── VALUES ── */
+#values{background:#fff;padding:28px 0 18px;border-top:1px solid #f0f0f0}
+.values-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;
+}
+.value-card{
+  background:#fafafa;border:1px solid #ececec;border-radius:12px;
+  padding:16px 14px;
+}
+.value-card h3{font-size:18px;margin-bottom:6px}
+.value-card p{font-size:15px;color:#5a5a5a}
+
+@media(prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{display:none}
+  .burger{display:flex}
+  .hdr-phone{display:none}
+  .lang-switch{margin-left:auto;margin-right:10px}
+  .hdr-inner{padding:18px 24px}
+  #hdr.on .hdr-inner{padding:12px 24px}
+  #mnav a,#mnav .mnav-phone{padding-left:24px}
+  .hero-content{padding:94px 24px 54px}
+  .wrap{padding:0 24px}
+  section{padding:52px 0}
+  .about-grid{grid-template-columns:1fr;gap:48px}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-side{justify-self:start;min-width:0;transform:none}
+  .hf-row{grid-template-columns:1fr}
+  .flow-grid{grid-template-columns:1fr 1fr}
+  .proof-grid{grid-template-columns:1fr}
+  .values-grid{grid-template-columns:1fr}
+  .widgets-grid{grid-template-columns:1fr}
+  .calc-grid{grid-template-columns:1fr}
+  .ab-float{width:130px;right:-12px}
+  .ab-badge{left:-10px}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .t-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:28px}
+  .row2{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  h1{font-size:34px}
+  .hero-lead{font-size:19px}
+  .hero-nums{gap:24px}
+  .hn-val{font-size:28px}
+  .svc-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .t-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .foot-bottom{flex-direction:column}
+  .hero-side{grid-template-columns:1fr}
+  .proof-list{grid-template-columns:1fr}
+  .flow-grid{grid-template-columns:1fr}
+  #chat-toggle{right:14px;bottom:18px;width:58px;height:58px}
+  #chatbox{right:10px;bottom:88px}
+  .chat-hint{display:none}
+  #chat-log{height:210px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="hdr-inner">
+    <a href="#"><img src="img/logo_klb-01-white.svg" alt="KLB Transport" id="logo"></a>
+    <nav>
+      <a href="#about" id="nav-about">Par mums</a>
+      <a href="#svc" id="nav-services">Pakalpojumi</a>
+      <a href="#why" id="nav-why">Priekšrocības</a>
+      <a href="#contact" id="nav-contact">Kontakti</a>
+    </nav>
+    <div class="lang-switch" role="group" aria-label="Language switch">
+      <button class="lang-btn active" type="button" data-lang="lv">
+        <img class="lang-flag" alt="Latviešu" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%239c1f2b'/%3E%3Crect x='0' y='26' width='64' height='12' fill='%23fff'/%3E%3C/svg%3E">
+        <span>LV</span>
+      </button>
+      <button class="lang-btn" type="button" data-lang="ru">
+        <img class="lang-flag" alt="Русский" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%23fff'/%3E%3Cpath d='M1 32h62v31H1z' fill='%23d52b1e'/%3E%3Cpath d='M1 21h62v21H1z' fill='%230039a6'/%3E%3C/svg%3E">
+        <span>RU</span>
+      </button>
+      <button class="lang-btn" type="button" data-lang="en">
+        <img class="lang-flag" alt="English" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%23012169'/%3E%3Cpath d='M1 8l55 48M63 8L8 56' stroke='%23fff' stroke-width='10'/%3E%3Cpath d='M1 8l55 48M63 8L8 56' stroke='%23c8102e' stroke-width='5'/%3E%3Cpath d='M32 1v62M1 32h62' stroke='%23fff' stroke-width='14'/%3E%3Cpath d='M32 1v62M1 32h62' stroke='%23c8102e' stroke-width='8'/%3E%3C/svg%3E">
+        <span>EN</span>
+      </button>
+    </div>
+    <a href="tel:+37126414900" class="hdr-phone">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.4 2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.87-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +371 26 414 900
+    </a>
+    <button class="burger" id="brg" aria-label="Izvēlne"><span></span><span></span><span></span></button>
+  </div>
+  <div id="mnav">
+    <a href="#about" id="mnav-about">Par mums</a>
+    <a href="#svc" id="mnav-services">Pakalpojumi</a>
+    <a href="#why" id="mnav-why">Priekšrocības</a>
+    <a href="#contact" id="mnav-contact">Kontakti</a>
+    <a href="tel:+37126414900" class="mnav-phone">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.4 2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.87-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +371 26 414 900
+    </a>
+    <a href="tel:+37126179179" class="mnav-phone">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.4 2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.87-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +371 26 179 179
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-grid">
+      <div class="hero-main">
+        <div class="hero-tag" id="hero-tag">Transporta pakalpojumi · Rīga &amp; visa Latvija</div>
+        <h1 id="hero-title">Pārvākšanās bez<br>stresa ar <em>KLB</em></h1>
+        <p class="hero-lead" id="hero-lead">
+          Vairāk kā <span class="hl">11 gadu pieredze</span> pārvākšanās, mēbeļu piegādes un krāvēju pakalpojumos. Apkalpojam arī <span class="hl">valsts pasūtījumus un iestāžu pārvešanu</span>.
+        </p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn btn-red" id="hero-btn-quote">Pieprasīt cenu</a>
+          <a href="#svc" class="btn btn-ghost" id="hero-btn-all">Visi pakalpojumi</a>
+        </div>
+      </div>
+      <div class="hero-side fd" style="transition-delay:.1s">
+        <div class="hero-widget">
+          <h3 id="hero-widget-title">Ātrais pieprasījums 15 min laikā</h3>
+          <form class="hero-form" id="hero-quote">
+            <div class="hf-row">
+              <select class="hf" id="hq-service" required>
+                <option value="" id="hq-opt-0">Pakalpojums</option>
+                <option id="hq-opt-1">Pārvākšanās serviss</option>
+                <option id="hq-opt-2">Mēbeļu piegāde</option>
+                <option id="hq-opt-3">Atkritumu izvešana</option>
+                <option id="hq-opt-4">Krāvēju pakalpojumi</option>
+              </select>
+              <input class="hf" id="hq-phone" type="tel" placeholder="+371 XX XXX XXX" required>
+            </div>
+            <button class="hf-btn" type="submit" id="hero-widget-btn">Saņemt atzvanu</button>
+            <p class="hf-msg" id="hq-msg"></p>
+          </form>
+        </div>
+        <div class="hero-chip">
+          <strong id="hero-chip-title">Operatīva ierašanās</strong>
+          <span id="hero-chip-text">Rīgā un Pierīgā bieži vien tajā pašā dienā.</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-nums">
+      <div>
+        <div class="hn-val"><span class="ctr" data-t="11">0</span><span>+</span></div>
+        <div class="hn-lbl" id="hero-stat-1">Gadu pieredze</div>
+      </div>
+      <div>
+        <div class="hn-val"><span class="ctr" data-t="1500">0</span><span>+</span></div>
+        <div class="hn-lbl" id="hero-stat-2">Pasūtījumi izpildīti</div>
+      </div>
+      <div>
+        <div class="hn-val"><span class="ctr" data-t="7">0</span></div>
+        <div class="hn-lbl" id="hero-stat-3">Dienas nedēļā</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERTIBAS -->
+<section id="values">
+  <div class="wrap">
+    <div class="values-grid">
+      <article class="value-card fd">
+        <h3 id="val-1-t">Godīgums</h3>
+        <p id="val-1-p">Cenas un nosacījumus vienmēr saskaņojam pirms darba sākuma.</p>
+      </article>
+      <article class="value-card fd" style="transition-delay:.08s">
+        <h3 id="val-2-t">Punktualitāte</h3>
+        <p id="val-2-p">Ierodamies laikā un turamies pie saskaņotā darba plāna.</p>
+      </article>
+      <article class="value-card fd" style="transition-delay:.16s">
+        <h3 id="val-3-t">Atbildīga attieksme</h3>
+        <p id="val-3-p">Ar rūpību izturamies pret katru klientu, mantu un telpu.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PAKALPOJUMI -->
+<section id="svc">
+  <div class="wrap">
+    <div class="fd">
+      <div class="sec-tag" id="svc-tag">Pakalpojumi</div>
+      <h2 id="svc-title">Ko mēs darām</h2>
+      <p class="sec-sub" id="svc-sub">No nelielas mēbeles pārvešanas līdz pilnai biroja pārcelšanai, tai skaitā <span class="hl">iestāžu un valsts pasūtījumu pārvešanai</span>, ar skaidru cenu pirms darba.</p>
+    </div>
+    <div class="svc-grid">
+
+      <div class="svc fd" style="transition-delay:.05s">
+        <div class="svc-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3 id="svc-c1-t">Pārvākšanās serviss</h3>
+        <p id="svc-c1-p">Pilns vai daļējs serviss. Palīdzēsim iepakot, ievietot automašīnā, aizvest un ienest jaunajā vietā.</p>
+        <small id="svc-c1-s">Dzīvokļi · biroji · noliktavas</small>
+      </div>
+
+      <div class="svc fd" style="transition-delay:.1s">
+        <div class="svc-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3 id="svc-c2-t">Sadzīves tehnikas piegāde</h3>
+        <p id="svc-c2-p">Rūpīga sadzīves tehnikas transportēšana un piegāde. Pārbaudām stāvokli piegādes brīdī kopā ar klientu.</p>
+        <small id="svc-c2-s">Ledusskapji · veļasmašīnas · plītis</small>
+      </div>
+
+      <div class="svc fd" style="transition-delay:.15s">
+        <div class="svc-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        </div>
+        <h3 id="svc-c3-t">Mēbeļu piegāde un ienešana</h3>
+        <p id="svc-c3-p">Jebkura veida mēbeles — mājas vai darba telpām. Uzmanīgi ienesam līdz norādītajai vietai.</p>
+        <small id="svc-c3-s">Ar ienešanu pa kāpnēm</small>
+      </div>
+
+      <div class="svc fd" style="transition-delay:.2s">
+        <div class="svc-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        </div>
+        <h3 id="svc-c4-t">Atkritumu izvešana</h3>
+        <p id="svc-c4-p">Būvgružu un citu atkritumu izvešana — vienreizēji vai regulāri pēc līguma. Droši un ātri.</p>
+        <small id="svc-c4-s">Ar iekraušanu un izvešanu</small>
+      </div>
+
+      <div class="svc fd" style="transition-delay:.25s">
+        <div class="svc-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 id="svc-c5-t">Krāvēju pakalpojumi</h3>
+        <p id="svc-c5-p">Iekraušana un izkraušana — gan kā papildu pakalpojums, gan atsevišķi. Spēcīga un uzticama komanda.</p>
+        <small id="svc-c5-s">Elastīgs cilvēku skaits</small>
+      </div>
+
+      <div class="svc fd" style="transition-delay:.3s">
+        <div class="svc-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3 id="svc-c6-t">Biroja pārvešana</h3>
+        <p id="svc-c6-p">Uzņēmuma iekārtu un mēbeļu pārcelšana ar minimāliem dīkstāves laikiem. Arī būvmateriālu piegāde.</p>
+        <small id="svc-c6-s">Plānošana pa etapiem</small>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- KĀ STRĀDĀJAM -->
+<section id="flow">
+  <div class="wrap">
+    <div class="flow-head fd">
+      <div class="sec-tag" id="flow-tag">Process</div>
+      <h2 id="flow-title">No zvana līdz piegādei bez liekiem posmiem</h2>
+      <p class="sec-sub" id="flow-sub">Skaidrs process, lai klients jebkurā brīdī saprot, kas notiek tālāk un cik tas maksās.</p>
+    </div>
+    <div class="flow-grid">
+      <div class="flow-card fd" style="transition-delay:.05s">
+        <div class="flow-step">01</div>
+        <h3 id="flow-c1-t">Pieteikums</h3>
+        <p id="flow-c1-p">Nosauciet adresi, stāvu, aptuveno apjomu un vēlamo datumu.</p>
+      </div>
+      <div class="flow-card fd" style="transition-delay:.12s">
+        <div class="flow-step">02</div>
+        <h3 id="flow-c2-t">Piedāvājums</h3>
+        <p id="flow-c2-p">Saskaņojam cenu, darbu apjomu un komandas sastāvu pirms darba sākuma.</p>
+      </div>
+      <div class="flow-card fd" style="transition-delay:.19s">
+        <div class="flow-step">03</div>
+        <h3 id="flow-c3-t">Izpilde</h3>
+        <p id="flow-c3-p">Iekraušana, pārvadāšana un ienešana notiek pēc plāna un ar atbildīgu attieksmi.</p>
+      </div>
+      <div class="flow-card fd" style="transition-delay:.26s">
+        <div class="flow-step">04</div>
+        <h3 id="flow-c4-t">Nodošana</h3>
+        <p id="flow-c4-p">Kopā pārbaudām rezultātu uz vietas un noslēdzam darbu bez pārsteigumiem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAR MUMS -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-imgs fd">
+        <img src="img/klb_-transporta-pakalpojumi.jpg" alt="KLB Transport pakalpojumi" class="ab-main">
+        <img src="img/parvaksanas-serviss.jpg" alt="Pārvākšanās" class="ab-float">
+        <div class="ab-badge">
+          <div class="ab-num">11+</div>
+          <div class="ab-txt">gadu</div>
+        </div>
+      </div>
+      <div class="fd" style="transition-delay:.15s">
+      <div class="sec-tag" id="about-tag">Par mums</div>
+      <h2 id="about-title">SIA KLB Transport — jūsu uzticamais partneris</h2>
+      <p id="about-p1">Esam specializēti transporta pakalpojumu uzņēmums ar vairāk nekā 11 gadu pieredzi. Primāri strādājam Rīgā, taču apkalpojam arī visu Latvijas teritoriju.</p>
+      <p id="about-p2">Ja nepieciešamais pakalpojums nav sarakstā, <span class="hl">meklēsim individuālu risinājumu</span> tieši jūsu situācijai.</p>
+      <ul class="chk-list">
+          <li id="about-li1">Piegāde ietver ienešanu pa kāpnēm līdz norādītajai telpai</li>
+          <li id="about-li2">Kopīga kravas apskate kopā ar klientu pēc piegādes</li>
+          <li id="about-li3">Izpildes laiks: 1–2 dienas vai pēc vienošanās</li>
+          <li id="about-li4">Strādājam 7 dienas nedēļā, arī svētku dienās</li>
+          <li id="about-li5">Atsevišķi risinājumi iestāžu pārcelšanai un valsts pasūtījumiem</li>
+        </ul>
+        <a href="tel:+37126414900" class="btn btn-red" id="about-call-btn">Zvanīt tagad</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KLB PIEEJA -->
+<section id="proof">
+  <div class="wrap">
+    <div class="fd">
+      <div class="sec-tag" id="proof-tag">KLB pieeja</div>
+      <h2 id="proof-title">Komanda, kas domā ne tikai par transportu, bet arī par rezultātu</h2>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-main fd" style="transition-delay:.06s">
+        <h3 id="proof-main-title">Vairāk nekā “aizvest no punkta A uz B”</h3>
+        <p id="proof-main-p">Mēs plānojam secību, pielāgojam komandu objektam un jau iepriekš noņemam riskus, kas parasti rada kavēšanos vai papildus izmaksas.</p>
+        <div class="proof-list">
+          <div class="proof-item">
+            <strong id="proof-i1-t">Pirms darbu sākuma</strong>
+            <span id="proof-i1-p">Skaidri saskaņoti laiki un darbu robežas.</span>
+          </div>
+          <div class="proof-item">
+            <strong id="proof-i2-t">Objektā</strong>
+            <span id="proof-i2-p">Kravas drošība un precīza ienešana telpās.</span>
+          </div>
+          <div class="proof-item">
+            <strong id="proof-i3-t">Komunikācija</strong>
+            <span id="proof-i3-p">Operatīvi atjauninājumi par statusu un ierašanos.</span>
+          </div>
+          <div class="proof-item">
+            <strong id="proof-i4-t">Noslēgumā</strong>
+            <span id="proof-i4-p">Kopīga rezultāta pārbaude uz vietas.</span>
+          </div>
+        </div>
+      </div>
+      <div class="proof-side">
+        <div class="proof-kpi fd" style="transition-delay:.12s">
+          <strong>1500+</strong>
+          <span id="proof-kpi-1">Izpildīti pasūtījumi</span>
+        </div>
+        <div class="proof-kpi fd" style="transition-delay:.18s">
+          <strong>11+</strong>
+          <span id="proof-kpi-2">Gadi nozarē</span>
+        </div>
+        <div class="proof-kpi fd" style="transition-delay:.24s">
+          <strong>7/7</strong>
+          <span id="proof-kpi-3">Darbs katru nedēļu</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WIDGETI -->
+<section id="widgets">
+  <div class="wrap">
+    <div class="fd">
+      <div class="sec-tag" id="widgets-tag">Interaktīvi rīki</div>
+      <h2 id="widgets-title">Aprēķini izmaksas un saņem atbildes uzreiz</h2>
+      <p class="sec-sub" id="widgets-sub">Līdzīgi kā konkurentu lapās ar tūlītējiem kalkulatoriem, šeit var ātri modelēt aptuveno cenu un pārbaudīt biežākos jautājumus.</p>
+    </div>
+    <div class="widgets-grid">
+      <div class="calc-card fd" style="transition-delay:.05s">
+        <div class="calc-head">
+          <h3 id="calc-title">Mini cenu kalkulators</h3>
+          <span class="calc-live">LIVE</span>
+        </div>
+        <div class="calc-grid">
+          <div class="fg">
+            <label for="calc-service" id="calc-label-service">Pakalpojums</label>
+            <select id="calc-service" class="fi">
+              <option value="65" id="calc-opt-service-1">Pārvākšanās serviss</option>
+              <option value="55" id="calc-opt-service-2">Mēbeļu piegāde</option>
+              <option value="45" id="calc-opt-service-3">Atkritumu izvešana</option>
+              <option value="40" id="calc-opt-service-4">Krāvēju pakalpojumi</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="calc-loaders" id="calc-label-loaders">Krāvēji</label>
+            <select id="calc-loaders" class="fi">
+              <option value="0" id="calc-opt-loader-0">Nav nepieciešami</option>
+              <option value="25" id="calc-opt-loader-1">1 krāvējs</option>
+              <option value="45" id="calc-opt-loader-2">2 krāvēji</option>
+            </select>
+          </div>
+        </div>
+        <div class="range-wrap">
+          <div class="range-row"><span id="calc-floor-label">Stāvs</span><strong id="floor-val">2</strong></div>
+          <input id="calc-floor" type="range" min="0" max="9" value="2">
+        </div>
+        <div class="range-wrap" style="margin-top:10px">
+          <div class="range-row"><span id="calc-distance-label">Attālums (km)</span><strong id="distance-val">8</strong></div>
+          <input id="calc-distance" type="range" min="1" max="70" value="8">
+        </div>
+        <div class="calc-out">
+          <div class="calc-val" id="calc-price">€92</div>
+          <div class="calc-note" id="calc-note">Aptuvenā cena. Precīzu piedāvājumu iedosim pēc adreses un apjoma.</div>
+        </div>
+      </div>
+      <div class="widgets-right">
+        <div class="stats-card fd" style="transition-delay:.1s">
+          <div class="stats-head" id="stats-head">Šodienas pieejamība</div>
+          <div class="stat-line"><span id="stats-morning">Rīta sloti</span><strong>80%</strong></div>
+          <div class="stat-bar"><span class="stat-fill" style="width:80%"></span></div>
+          <div class="stat-line"><span id="stats-afternoon">Pēcpusdiena</span><strong>65%</strong></div>
+          <div class="stat-bar"><span class="stat-fill" style="width:65%"></span></div>
+          <div class="stat-line"><span id="stats-evening">Vakars</span><strong>42%</strong></div>
+          <div class="stat-bar"><span class="stat-fill" style="width:42%"></span></div>
+        </div>
+        <div class="faq-card fd" style="transition-delay:.16s">
+          <div class="stats-head" id="faq-head">Biežākie jautājumi</div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" id="faq-q1">Vai strādājat brīvdienās? <span class="sym">+</span></button>
+            <div class="faq-a" id="faq-a1">Jā, strādājam 7 dienas nedēļā, ieskaitot svētku dienas pēc vienošanās.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" id="faq-q2">Vai palīdzat ar ienešanu pa kāpnēm? <span class="sym">+</span></button>
+            <div class="faq-a" id="faq-a2">Jā, ienešana līdz norādītajai telpai ir viens no mūsu pamatpakalpojumiem.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" id="faq-q3">Cik ātri varat ierasties? <span class="sym">+</span></button>
+            <div class="faq-a" id="faq-a3">Rīgā bieži spējam ierasties tajā pašā dienā, ja ir pieejams logs grafikā.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIEKŠROCĪBAS -->
+<section id="why">
+  <div class="wrap">
+    <div class="fd" style="text-align:center;max-width:500px;margin:0 auto">
+      <div class="sec-tag" style="justify-content:center" id="why-tag">Kāpēc mēs</div>
+      <h2 id="why-title">Uzticamība, kas darbojas</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fd" style="transition-delay:.05s">
+        <div class="why-n">01</div>
+        <h3 id="why-c1-t">11+ gadu pieredze</h3>
+        <p id="why-c1-p">Esam izpildījuši vairāk nekā 1500 pasūtījumu. Zinām, kā rīkoties ar smagiem, trausliem un sarežģītas formas priekšmetiem.</p>
+      </div>
+      <div class="why-card fd" style="transition-delay:.12s">
+        <div class="why-n">02</div>
+        <h3 id="why-c2-t">7 dienas nedēļā</h3>
+        <p id="why-c2-p">Strādājam arī nedēļas nogalēs un svētku dienās. Zvaniet jebkurā laikā — atbildēsim uz visiem jautājumiem.</p>
+      </div>
+      <div class="why-card fd" style="transition-delay:.19s">
+        <div class="why-n">03</div>
+        <h3 id="why-c3-t">Saprātīgas cenas</h3>
+        <p id="why-c3-p">Cenu saskaņojam pirms darbu uzsākšanas. Nekādu slēpto maksājumu — maksājat tikai par reāli paveikto darbu.</p>
+      </div>
+      <div class="why-card fd" style="transition-delay:.26s">
+        <div class="why-n">04</div>
+        <h3 id="why-c4-t">Valsts iestāžu pārvešana</h3>
+        <p id="why-c4-p">Nodrošinām iestāžu un publiskā sektora pārcelšanu ar precīzu plānošanu, termiņu ievērošanu un dokumentētu darbu gaitu.</p>
+      </div>
+      <div class="why-card fd" style="transition-delay:.33s">
+        <div class="why-n">05</div>
+        <h3 id="why-c5-t">Rūpīga apiešanās</h3>
+        <p id="why-c5-p">Katrs priekšmets tiek transportēts ar maksimālu uzmanību. Pēc piegādes kopīgi pārbaudām kravas stāvokli.</p>
+      </div>
+      <div class="why-card fd" style="transition-delay:.40s">
+        <div class="why-n">06</div>
+        <h3 id="why-c6-t">Individuāla pieeja</h3>
+        <p id="why-c6-p">Nav tipiska uzdevuma — nav problēmas. Katram klientam meklējam vispiemērotāko risinājumu un laiku.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKTI -->
+<section id="contact">
+  <div class="wrap">
+    <div class="fd" style="text-align:center;max-width:500px;margin:0 auto 52px">
+      <div class="sec-tag" style="justify-content:center" id="contact-tag">Kontakti</div>
+      <h2 id="contact-title">Sazinies ar mums</h2>
+      <p class="sec-sub" style="margin:0 auto" id="contact-sub">Atbildēsim 1–2 darba dienu laikā vai zvaniet pa telefonu, jo <span class="hl">atbildam katru dienu</span>.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="fd">
+        <div class="ci">
+          <div class="ci-ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.4 2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.87-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="ci-lbl">Telefoni</div>
+            <a href="tel:+37126414900" class="ci-val">+371 26 414 900</a>
+            <div class="ci-note">Ģirts</div>
+            <a href="tel:+37126179179" class="ci-val" style="display:block;margin-top:6px">+371 26 179 179</a>
+            <div class="ci-note">Artūrs</div>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="ci-lbl">E-pasts</div>
+            <a href="mailto:info@klbtransport.lv" class="ci-val">info@klbtransport.lv</a>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="ci-lbl">Faktiskā adrese</div>
+            <div class="ci-val" style="cursor:default">Dzelzavas iela 72, Rīga</div>
+            <div class="ci-note">Mēbeļu nama telpās</div>
+          </div>
+        </div>
+        <div class="ci">
+          <div class="ci-ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div>
+            <div class="ci-lbl">Darba laiks</div>
+            <div class="ci-val" style="cursor:default;font-size:14px;font-weight:500">Katru dienu, 7 dienas nedēļā</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="rekviziti">
+          <div><strong style="color:var(--mid)">SIA KLB</strong></div>
+          <div>Reģ. nr.: LV40103710874</div>
+          <div>Banka: AS SWEDBANK</div>
+          <div>Konts: LV71HABA0551037116856</div>
+          <div>Juridiskā adrese: Braslas iela 29/1, Mārupe</div>
+        </div>
+        <div style="margin-top:20px">
+          <a href="https://www.facebook.com/KLB-Transport-2429236003770018/" target="_blank" rel="noopener"
+            style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--mid);text-decoration:none;transition:color .2s"
+            onmouseover="this.style.color='#ed1c24'" onmouseout="this.style.color='var(--mid)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            Facebook lapa
+          </a>
+        </div>
+      </div>
+
+      <div class="cform fd" style="transition-delay:.15s">
+        <h3>Pieprasīt cenu</h3>
+        <p>Aizpildiet formu un mēs sazināsimies ar jums pēc iespējas ātrāk</p>
+        <form onsubmit="sendForm(event)">
+          <div class="row2">
+            <div class="fg">
+              <label for="nm">Vārds *</label>
+              <input type="text" id="nm" class="fi" placeholder="Jūsu vārds" required>
+            </div>
+            <div class="fg">
+              <label for="ph">Tālrunis *</label>
+              <input type="tel" id="ph" class="fi" placeholder="+371 XX XXX XXX" required>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="sv">Pakalpojums</label>
+            <select id="sv" class="fi">
+              <option value="">Izvēlieties...</option>
+              <option>Pārvākšanās serviss</option>
+              <option>Sadzīves tehnikas piegāde</option>
+              <option>Mēbeļu piegāde / ienešana</option>
+              <option>Mēbeļu montāža / demontāža</option>
+              <option>Büvmateriālu piegāde</option>
+              <option>Atkritumu izvešana</option>
+              <option>Krāvēju pakalpojumi</option>
+              <option>Biroja pārvešana</option>
+              <option>Cits</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="msg">Papildu info</label>
+            <textarea id="msg" class="fi" placeholder="Adrese, apjoms, vēlamais datums..."></textarea>
+          </div>
+          <button type="submit" class="submit">Nosūtīt pieprasījumu →</button>
+          <p id="fmsg"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATSAUKSMES -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="t-head fd">
+      <div class="sec-tag">Atsauksmes</div>
+      <h2>Ko klienti raksta pēc darba izpildes</h2>
+    </div>
+    <div class="t-grid">
+      <article class="t-card fd" style="transition-delay:.05s">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Ļoti ok serviss. Atnāca laikā, visu smuki nonesa, bez steigas un bez stresa. Cena bija tieši kā sarunājām."</p>
+        <div class="t-meta">Mārtiņš K., Rīga</div>
+      </article>
+      <article class="t-card fd" style="transition-delay:.1s">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Pārvedām biroju vienā dienā. Komunikācija laba, puiši pieklājīgi. noteikti iesaku, ja vajag normālu komandu."</p>
+        <div class="t-meta">Ilze P., Mārupes novads</div>
+      </article>
+      <article class="t-card fd" style="transition-delay:.15s">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Pasūtīju ienešanu 5. stāvā, viss izdarīts akurāti. bija viena skapja detaļa sarežģīta, bet atrisināja uzreiz."</p>
+        <div class="t-meta">Jānis B., Ogre</div>
+      </article>
+    </div>
+    <p class="t-note fd" style="transition-delay:.2s">Piezīme: šeit šobrīd ir demonstrācijas atsauksmju teksti. Lai publicētu reālas Google atsauksmes, nomainiet tekstu pret faktiskām klientu atsauksmēm no jūsu profila.</p>
+  </div>
+</section>
+
+<!-- PARTNERI -->
+<section id="partners">
+  <div class="wrap">
+    <div class="p-label" id="partners-label">Sadarbības partneri</div>
+    <div class="p-row">
+      <img src="img/scand-logo.jpg" alt="Scand">
+      <img src="img/B4S_Vpng.png" alt="B4S">
+      <img src="img/banner-6.png" alt="Partneris 3">
+      <img src="img/logo.jpg" alt="Partneris 4">
+    </div>
+  </div>
+</section>
+
+<!-- KARTE -->
+<div id="map">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2175.8!2d24.1555!3d56.9490!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eecfd4c87b4a27%3A0x5d3cbb8e83c3f68!2sDzelzavas%20iela%2072%2C%20Zemgales%20priek%C5%A1pils%C4%93ta%2C%20R%C4%ABga%2C%20LV-1082!5e0!3m2!1slv!2slv!4v1700000000"
+    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+    title="KLB Transport — Dzelzavas iela 72, Rīga"></iframe>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="img/logo_klb-01-white.svg" alt="KLB Transport" class="foot-logo">
+        <p class="foot-about">Uzticami transporta pakalpojumi Rīgā un visā Latvijā. Pārvākšanās, mēbeļu piegāde, atkritumu izvešana un krāvēju pakalpojumi.</p>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/KLB-Transport-2429236003770018/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Pakalpojumi</h4>
+        <a href="#svc">Pārvākšanās serviss</a>
+        <a href="#svc">Sadzīves tehnikas piegāde</a>
+        <a href="#svc">Mēbeļu piegāde</a>
+        <a href="#svc">Atkritumu izvešana</a>
+        <a href="#svc">Krāvēju pakalpojumi</a>
+        <a href="#svc">Biroja pārvešana</a>
+      </div>
+      <div class="foot-col">
+        <h4>Kontakti</h4>
+        <a href="tel:+37126414900" class="red">+371 26 414 900</a>
+        <a href="tel:+37126179179" class="red">+371 26 179 179</a>
+        <a href="mailto:info@klbtransport.lv">info@klbtransport.lv</a>
+        <span>Dzelzavas iela 72, Rīga</span>
+        <span>Katru dienu, visu nedēļu</span>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 SIA KLBTransport · Reģ. nr. LV40103710874</span>
+      <span>www.klbtransport.lv</span>
+    </div>
+  </div>
+</footer>
+
+<button id="top" aria-label="Uz augšu">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<button id="chat-toggle" aria-label="Atvērt čatu">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</button>
+<div class="chat-hint" id="chat-hint-text">Jautā KLB</div>
+<div id="chatbox">
+  <div class="chat-head">
+    <div class="chat-head-main">
+      <img class="chat-ai" alt="AI asistents" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff2a35'/%3E%3Cstop offset='1' stop-color='%238d0b12'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='96' height='96' rx='48' fill='url(%23g)'/%3E%3Ccircle cx='48' cy='51' r='24' fill='%23fff' fill-opacity='.15'/%3E%3Crect x='27' y='36' width='42' height='28' rx='14' fill='none' stroke='%23fff' stroke-width='4'/%3E%3Ccircle cx='39' cy='50' r='4' fill='%23fff'/%3E%3Ccircle cx='57' cy='50' r='4' fill='%23fff'/%3E%3Cpath d='M34 62c4 5 24 5 28 0' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+      <div>
+        <strong id="chat-head-title">KLB AI asistents</strong>
+        <small id="chat-head-sub">Tūlītējas atbildes 24/7</small>
+      </div>
+    </div>
+    <button id="chat-close" aria-label="Aizvērt čatu">×</button>
+  </div>
+  <div id="chat-log">
+    <div class="msg bot" id="chat-welcome">Sveiki! Esmu KLB AI asistents. Izvēlieties kādu no populārajiem jautājumiem vai uzrakstiet savu.</div>
+  </div>
+  <div class="chat-quick" id="chat-quick">
+    <button type="button" class="qchip hot" data-intent="price" id="chip-price">Aptuvenā cena</button>
+    <button type="button" class="qchip" data-intent="hours" id="chip-hours">Darba laiks</button>
+    <button type="button" class="qchip" data-intent="callback" id="chip-callback">Atzvans</button>
+    <button type="button" class="qchip" data-intent="public" id="chip-public">Iestāžu pārvešana</button>
+  </div>
+  <form class="chat-input" id="chat-form">
+    <input id="chat-text" type="text" placeholder="Uzrakstiet jautājumu..." autocomplete="off" required>
+    <button type="submit" id="chat-send">Sūtīt</button>
+  </form>
+</div>
+
+<div id="cookie">
+  <div class="cookie-row">
+    <p class="cookie-text" id="cookie-text">Šī vietne izmanto sīkdatnes, lai uzlabotu darbību un analizētu apmeklējumu. Turpinot lietot vietni, jūs piekrītat sīkdatņu izmantošanai.</p>
+    <div class="cookie-btns">
+      <button class="cookie-btn main" id="cookie-accept">Piekrītu</button>
+      <button class="cookie-btn" id="cookie-decline">Nepiekrītu</button>
+    </div>
+  </div>
+</div>
+<div id="cookie-backdrop"></div>
+
+<script>
+// ── HEADER SCROLL ──────────────────────────────
+const hdr = document.getElementById('hdr');
+const logo = document.getElementById('logo');
+const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
+const langButtons = [...document.querySelectorAll('.lang-btn')];
+let currentLang = 'lv';
+
+const i18n = {
+  lv: {
+    text: {
+      'nav-about':'Par mums','nav-services':'Pakalpojumi','nav-why':'Priekšrocības','nav-contact':'Kontakti',
+      'mnav-about':'Par mums','mnav-services':'Pakalpojumi','mnav-why':'Priekšrocības','mnav-contact':'Kontakti',
+      'hero-tag':'Transporta pakalpojumi · Rīga & visa Latvija',
+      'hero-title':'Pārvākšanās bez<br>stresa ar <em>KLB</em>',
+      'hero-lead':'Vairāk kā <span class="hl">11 gadu pieredze</span> pārvākšanās, mēbeļu piegādes un krāvēju pakalpojumos. Apkalpojam arī <span class="hl">valsts pasūtījumus un iestāžu pārvešanu</span>.',
+      'hero-btn-quote':'Pieprasīt cenu','hero-btn-all':'Visi pakalpojumi','hero-widget-title':'Ātrais pieprasījums 15 min laikā','hero-widget-btn':'Saņemt atzvanu',
+      'hero-chip-title':'Operatīva ierašanās','hero-chip-text':'Rīgā un Pierīgā bieži vien tajā pašā dienā.',
+      'hero-stat-1':'Gadu pieredze','hero-stat-2':'Pasūtījumi izpildīti','hero-stat-3':'Dienas nedēļā',
+      'svc-tag':'Pakalpojumi','svc-title':'Ko mēs darām','svc-sub':'No nelielas mēbeles pārvešanas līdz pilnai biroja pārcelšanai, tai skaitā <span class="hl">iestāžu un valsts pasūtījumu pārvešanai</span>, ar skaidru cenu pirms darba.',
+      'svc-c1-t':'Pārvākšanās serviss','svc-c1-p':'Pilns vai daļējs serviss. Palīdzēsim iepakot, ievietot automašīnā, aizvest un ienest jaunajā vietā.','svc-c1-s':'Dzīvokļi · biroji · noliktavas',
+      'svc-c2-t':'Sadzīves tehnikas piegāde','svc-c2-p':'Rūpīga sadzīves tehnikas transportēšana un piegāde. Pārbaudām stāvokli piegādes brīdī kopā ar klientu.','svc-c2-s':'Ledusskapji · veļasmašīnas · plītis',
+      'svc-c3-t':'Mēbeļu piegāde un ienešana','svc-c3-p':'Jebkura veida mēbeles — mājas vai darba telpām. Uzmanīgi ienesam līdz norādītajai vietai.','svc-c3-s':'Ar ienešanu pa kāpnēm',
+      'svc-c4-t':'Atkritumu izvešana','svc-c4-p':'Būvgružu un citu atkritumu izvešana — vienreizēji vai regulāri pēc līguma. Droši un ātri.','svc-c4-s':'Ar iekraušanu un izvešanu',
+      'svc-c5-t':'Krāvēju pakalpojumi','svc-c5-p':'Iekraušana un izkraušana — gan kā papildu pakalpojums, gan atsevišķi. Spēcīga un uzticama komanda.','svc-c5-s':'Elastīgs cilvēku skaits',
+      'svc-c6-t':'Biroja pārvešana','svc-c6-p':'Uzņēmuma iekārtu un mēbeļu pārcelšana ar minimāliem dīkstāves laikiem. Arī būvmateriālu piegāde.','svc-c6-s':'Plānošana pa etapiem',
+      'flow-tag':'Process','flow-title':'No zvana līdz piegādei bez liekiem posmiem','flow-sub':'Skaidrs process, lai klients jebkurā brīdī saprot, kas notiek tālāk un cik tas maksās.',
+      'flow-c1-t':'Pieteikums','flow-c1-p':'Nosauciet adresi, stāvu, aptuveno apjomu un vēlamo datumu.',
+      'flow-c2-t':'Piedāvājums','flow-c2-p':'Saskaņojam cenu, darbu apjomu un komandas sastāvu pirms darba sākuma.',
+      'flow-c3-t':'Izpilde','flow-c3-p':'Iekraušana, pārvadāšana un ienešana notiek pēc plāna un ar atbildīgu attieksmi.',
+      'flow-c4-t':'Nodošana','flow-c4-p':'Kopā pārbaudām rezultātu uz vietas un noslēdzam darbu bez pārsteigumiem.',
+      'about-tag':'Par mums','about-title':'SIA KLB Transport — jūsu uzticamais partneris',
+      'about-p1':'Esam specializēti transporta pakalpojumu uzņēmums ar vairāk nekā 11 gadu pieredzi. Primāri strādājam Rīgā, taču apkalpojam arī visu Latvijas teritoriju.',
+      'about-p2':'Ja nepieciešamais pakalpojums nav sarakstā, <span class="hl">meklēsim individuālu risinājumu</span> tieši jūsu situācijai.',
+      'about-li1':'Piegāde ietver ienešanu pa kāpnēm līdz norādītajai telpai','about-li2':'Kopīga kravas apskate kopā ar klientu pēc piegādes',
+      'about-li3':'Izpildes laiks: 1–2 dienas vai pēc vienošanās','about-li4':'Strādājam 7 dienas nedēļā, arī svētku dienās',
+      'about-li5':'Atsevišķi risinājumi iestāžu pārcelšanai un valsts pasūtījumiem','about-call-btn':'Zvanīt tagad',
+      'proof-tag':'KLB pieeja','proof-title':'Komanda, kas domā ne tikai par transportu, bet arī par rezultātu',
+      'proof-main-title':'Vairāk nekā “aizvest no punkta A uz B”','proof-main-p':'Mēs plānojam secību, pielāgojam komandu objektam un jau iepriekš noņemam riskus, kas parasti rada kavēšanos vai papildus izmaksas.',
+      'proof-i1-t':'Pirms darbu sākuma','proof-i1-p':'Skaidri saskaņoti laiki un darbu robežas.',
+      'proof-i2-t':'Objektā','proof-i2-p':'Kravas drošība un precīza ienešana telpās.',
+      'proof-i3-t':'Komunikācija','proof-i3-p':'Operatīvi atjauninājumi par statusu un ierašanos.',
+      'proof-i4-t':'Noslēgumā','proof-i4-p':'Kopīga rezultāta pārbaude uz vietas.',
+      'proof-kpi-1':'Izpildīti pasūtījumi','proof-kpi-2':'Gadi nozarē','proof-kpi-3':'Darbs katru nedēļu',
+      'widgets-tag':'Interaktīvi rīki','widgets-title':'Aprēķini izmaksas un saņem atbildes uzreiz',
+      'widgets-sub':'Līdzīgi kā konkurentu lapās ar tūlītējiem kalkulatoriem, šeit var ātri modelēt aptuveno cenu un pārbaudīt biežākos jautājumus.',
+      'calc-title':'Mini cenu kalkulators','calc-label-service':'Pakalpojums','calc-label-loaders':'Krāvēji','calc-floor-label':'Stāvs','calc-distance-label':'Attālums (km)',
+      'hq-opt-0':'Pakalpojums','hq-opt-1':'Pārvākšanās serviss','hq-opt-2':'Mēbeļu piegāde','hq-opt-3':'Atkritumu izvešana','hq-opt-4':'Krāvēju pakalpojumi',
+      'calc-opt-service-1':'Pārvākšanās serviss','calc-opt-service-2':'Mēbeļu piegāde','calc-opt-service-3':'Atkritumu izvešana','calc-opt-service-4':'Krāvēju pakalpojumi',
+      'calc-opt-loader-0':'Nav nepieciešami','calc-opt-loader-1':'1 krāvējs','calc-opt-loader-2':'2 krāvēji',
+      'calc-note':'Aptuvenā cena. Precīzu piedāvājumu iedosim pēc adreses un apjoma.',
+      'stats-head':'Šodienas pieejamība','stats-morning':'Rīta sloti','stats-afternoon':'Pēcpusdiena','stats-evening':'Vakars',
+      'faq-head':'Biežākie jautājumi','faq-q1':'Vai strādājat brīvdienās? <span class="sym">+</span>','faq-a1':'Jā, strādājam 7 dienas nedēļā, ieskaitot svētku dienas pēc vienošanās.',
+      'faq-q2':'Vai palīdzat ar ienešanu pa kāpnēm? <span class="sym">+</span>','faq-a2':'Jā, ienešana līdz norādītajai telpai ir viens no mūsu pamatpakalpojumiem.',
+      'faq-q3':'Cik ātri varat ierasties? <span class="sym">+</span>','faq-a3':'Rīgā bieži spējam ierasties tajā pašā dienā, ja ir pieejams logs grafikā.',
+      'why-tag':'Kāpēc mēs','why-title':'Uzticamība, kas darbojas',
+      'why-c1-t':'11+ gadu pieredze','why-c1-p':'Esam izpildījuši vairāk nekā 1500 pasūtījumu. Zinām, kā rīkoties ar smagiem, trausliem un sarežģītas formas priekšmetiem.',
+      'why-c2-t':'7 dienas nedēļā','why-c2-p':'Strādājam arī nedēļas nogalēs un svētku dienās. Zvaniet jebkurā laikā — atbildēsim uz visiem jautājumiem.',
+      'why-c3-t':'Saprātīgas cenas','why-c3-p':'Cenu saskaņojam pirms darbu uzsākšanas. Nekādu slēpto maksājumu — maksājat tikai par reāli paveikto darbu.',
+      'why-c4-t':'Valsts iestāžu pārvešana','why-c4-p':'Nodrošinām iestāžu un publiskā sektora pārcelšanu ar precīzu plānošanu, termiņu ievērošanu un dokumentētu darbu gaitu.',
+      'why-c5-t':'Rūpīga apiešanās','why-c5-p':'Katrs priekšmets tiek transportēts ar maksimālu uzmanību. Pēc piegādes kopīgi pārbaudām kravas stāvokli.',
+      'why-c6-t':'Individuāla pieeja','why-c6-p':'Nav tipiska uzdevuma — nav problēmas. Katram klientam meklējam vispiemērotāko risinājumu un laiku.',
+      'contact-tag':'Kontakti','contact-title':'Sazinies ar mums',
+      'contact-sub':'Atbildēsim 1–2 darba dienu laikā vai zvaniet pa telefonu, jo <span class="hl">atbildam katru dienu</span>.',
+      'partners-label':'Sadarbības partneri',
+      'val-1-t':'Godīgums','val-1-p':'Cenas un nosacījumus vienmēr saskaņojam pirms darba sākuma.',
+      'val-2-t':'Punktualitāte','val-2-p':'Ierodamies laikā un turamies pie saskaņotā darba plāna.',
+      'val-3-t':'Atbildīga attieksme','val-3-p':'Ar rūpību izturamies pret katru klientu, mantu un telpu.',
+      'chat-hint-text':'Jautā KLB','chat-head-title':'KLB AI asistents','chat-head-sub':'Tūlītējas atbildes 24/7',
+      'chat-welcome':'Sveiki! Esmu KLB AI asistents. Izvēlieties kādu no populārajiem jautājumiem vai uzrakstiet savu.',
+      'chip-price':'Aptuvenā cena','chip-hours':'Darba laiks','chip-callback':'Atzvans','chip-public':'Iestāžu pārvešana',
+      'chat-send':'Sūtīt','cookie-text':'Šī vietne izmanto sīkdatnes, lai uzlabotu darbību un analizētu apmeklējumu. Turpinot lietot vietni, jūs piekrītat sīkdatņu izmantošanai.',
+      'cookie-accept':'Piekrītu','cookie-decline':'Nepiekrītu'
+    },
+    placeholder: {'chat-text':'Uzrakstiet jautājumu...','hq-phone':'+371 XX XXX XXX'},
+    replies: {
+      price:'Precīzai cenai atsūtiet adresi, stāvu un aptuveno apjomu. Vai zvaniet +371 26 414 900.',
+      hours:'Strādājam katru dienu, 7 dienas nedēļā. Varam saskaņot arī steidzamus darbus.',
+      callback:'Atstājiet tālruni un pakalpojumu formā “Ātrais pieprasījums”, vai zvaniet uz +371 26 414 900.',
+      public:'Jā, nodrošinām arī iestāžu un valsts pasūtījumu pārvešanu ar saskaņotu grafiku un dokumentētu procesu.',
+      services:'Jā, nodrošinām pārvākšanos, krāvējus, mēbeļu piegādi un atkritumu izvešanu visā Latvijā.',
+      default:'Paldies par ziņu. Lai sagatavotu precīzu piedāvājumu, atstājiet telefonu vai zvaniet +371 26 414 900.'
+    },
+    quickQ: {price:'Kāda ir aptuvenā cena?',hours:'Vai strādājat brīvdienās?',callback:'Kā pasūtīt atzvanu?',public:'Vai vedat valsts iestādes?'}
+  },
+  ru: {
+    text: {
+      'nav-about':'О нас','nav-services':'Услуги','nav-why':'Преимущества','nav-contact':'Контакты',
+      'mnav-about':'О нас','mnav-services':'Услуги','mnav-why':'Преимущества','mnav-contact':'Контакты',
+      'hero-tag':'Транспортные услуги · Рига и вся Латвия',
+      'hero-title':'Переезд без<br>стресса с <em>KLB</em>',
+      'hero-lead':'Более <span class="hl">11 лет опыта</span> в переездах, доставке мебели и услугах грузчиков. Также обслуживаем <span class="hl">госзаказы и переезд учреждений</span>.',
+      'hero-btn-quote':'Запросить цену','hero-btn-all':'Все услуги','hero-widget-title':'Быстрый запрос за 15 минут','hero-widget-btn':'Получить звонок',
+      'hero-chip-title':'Быстрый выезд','hero-chip-text':'В Риге и пригороде часто в тот же день.',
+      'hero-stat-1':'Лет опыта','hero-stat-2':'Выполненных заказов','hero-stat-3':'Дней в неделю',
+      'svc-tag':'Услуги','svc-title':'Что мы делаем','svc-sub':'От небольшой перевозки мебели до полного офисного переезда, включая <span class="hl">переезды учреждений и госзаказы</span>, с понятной ценой заранее.',
+      'svc-c1-t':'Сервис переезда','svc-c1-p':'Полный или частичный сервис. Поможем упаковать, загрузить, перевезти и занести вещи на новое место.','svc-c1-s':'Квартиры · офисы · склады',
+      'svc-c2-t':'Доставка бытовой техники','svc-c2-p':'Бережная перевозка и доставка бытовой техники. Проверяем состояние груза вместе с клиентом при доставке.','svc-c2-s':'Холодильники · стиральные машины · плиты',
+      'svc-c3-t':'Доставка и занос мебели','svc-c3-p':'Мебель любого типа — для дома и офиса. Аккуратно заносим до указанного места.','svc-c3-s':'С подъемом по лестнице',
+      'svc-c4-t':'Вывоз отходов','svc-c4-p':'Вывоз строительного и другого мусора — разово или регулярно по договору. Быстро и безопасно.','svc-c4-s':'С погрузкой и вывозом',
+      'svc-c5-t':'Услуги грузчиков','svc-c5-p':'Погрузка и разгрузка — как дополнительная услуга или отдельно. Сильная и надежная команда.','svc-c5-s':'Гибкое количество людей',
+      'svc-c6-t':'Офисный переезд','svc-c6-p':'Перевозка оборудования и мебели компании с минимальными простоями. Также доставка стройматериалов.','svc-c6-s':'Планирование по этапам',
+      'flow-tag':'Процесс','flow-title':'От звонка до доставки без лишних этапов','flow-sub':'Понятный процесс, чтобы клиент в любой момент понимал, что происходит дальше и сколько это стоит.',
+      'flow-c1-t':'Заявка','flow-c1-p':'Укажите адрес, этаж, примерный объем и желаемую дату.',
+      'flow-c2-t':'Предложение','flow-c2-p':'Согласуем цену, объем работ и состав команды до начала работ.',
+      'flow-c3-t':'Выполнение','flow-c3-p':'Погрузка, перевозка и занос выполняются по плану и с ответственным подходом.',
+      'flow-c4-t':'Передача','flow-c4-p':'Вместе проверяем результат на месте и закрываем работу без сюрпризов.',
+      'about-tag':'О нас','about-title':'SIA KLB Transport — ваш надежный партнер',
+      'about-p1':'Мы специализированная транспортная компания с опытом более 11 лет. Основной регион — Рига, но работаем по всей Латвии.',
+      'about-p2':'Если нужной услуги нет в списке, <span class="hl">найдем индивидуальное решение</span> именно для вашей ситуации.',
+      'about-li1':'Доставка включает подъем по лестнице до указанного помещения','about-li2':'Совместный осмотр груза после доставки',
+      'about-li3':'Срок выполнения: 1–2 дня или по договоренности','about-li4':'Работаем 7 дней в неделю, включая праздники',
+      'about-li5':'Отдельные решения для переезда учреждений и госзаказов','about-call-btn':'Позвонить сейчас',
+      'proof-tag':'Подход KLB','proof-title':'Команда, которая думает не только о перевозке, но и о результате',
+      'proof-main-title':'Больше, чем “перевезти из точки A в точку B”','proof-main-p':'Мы планируем этапы, подбираем команду под объект и заранее снимаем риски, которые обычно вызывают задержки и лишние расходы.',
+      'proof-i1-t':'До начала работ','proof-i1-p':'Четко согласованные сроки и границы работ.',
+      'proof-i2-t':'На объекте','proof-i2-p':'Безопасность груза и аккуратный занос в помещения.',
+      'proof-i3-t':'Коммуникация','proof-i3-p':'Оперативные обновления по статусу и времени прибытия.',
+      'proof-i4-t':'Финал','proof-i4-p':'Совместная проверка результата на месте.',
+      'proof-kpi-1':'Выполненные заказы','proof-kpi-2':'Лет в отрасли','proof-kpi-3':'Работа каждую неделю',
+      'widgets-tag':'Интерактивные инструменты','widgets-title':'Рассчитайте стоимость и получите ответы сразу',
+      'widgets-sub':'Как на сайтах конкурентов с мгновенными калькуляторами, здесь можно быстро смоделировать примерную цену и посмотреть частые вопросы.',
+      'calc-title':'Мини-калькулятор цены','calc-label-service':'Услуга','calc-label-loaders':'Грузчики','calc-floor-label':'Этаж','calc-distance-label':'Расстояние (км)',
+      'hq-opt-0':'Услуга','hq-opt-1':'Сервис переезда','hq-opt-2':'Доставка мебели','hq-opt-3':'Вывоз отходов','hq-opt-4':'Услуги грузчиков',
+      'calc-opt-service-1':'Сервис переезда','calc-opt-service-2':'Доставка мебели','calc-opt-service-3':'Вывоз отходов','calc-opt-service-4':'Услуги грузчиков',
+      'calc-opt-loader-0':'Не требуется','calc-opt-loader-1':'1 грузчик','calc-opt-loader-2':'2 грузчика',
+      'calc-note':'Примерная стоимость. Точное предложение дадим после адреса и объема.',
+      'stats-head':'Доступность сегодня','stats-morning':'Утренние слоты','stats-afternoon':'День','stats-evening':'Вечер',
+      'faq-head':'Частые вопросы','faq-q1':'Работаете в выходные? <span class="sym">+</span>','faq-a1':'Да, работаем 7 дней в неделю, включая праздники по договоренности.',
+      'faq-q2':'Помогаете с подъемом по лестнице? <span class="sym">+</span>','faq-a2':'Да, подъем до указанного помещения — одна из наших базовых услуг.',
+      'faq-q3':'Как быстро можете приехать? <span class="sym">+</span>','faq-a3':'В Риге часто можем приехать в тот же день, если есть свободное окно.',
+      'why-tag':'Почему мы','why-title':'Надежность, которая работает',
+      'why-c1-t':'11+ лет опыта','why-c1-p':'Выполнили более 1500 заказов. Знаем, как работать с тяжелыми, хрупкими и нестандартными предметами.',
+      'why-c2-t':'7 дней в неделю','why-c2-p':'Работаем по выходным и праздникам. Звоните в любое время — ответим на все вопросы.',
+      'why-c3-t':'Разумные цены','why-c3-p':'Согласуем цену до начала работ. Никаких скрытых платежей — платите только за выполненную работу.',
+      'why-c4-t':'Переезд госучреждений','why-c4-p':'Обеспечиваем переезд учреждений и публичного сектора с точным планированием и соблюдением сроков.',
+      'why-c5-t':'Бережное обращение','why-c5-p':'Каждый предмет перевозится максимально аккуратно. После доставки вместе проверяем состояние груза.',
+      'why-c6-t':'Индивидуальный подход','why-c6-p':'Нет типовой задачи — не проблема. Подбираем лучшее решение и время для каждого клиента.',
+      'contact-tag':'Контакты','contact-title':'Свяжитесь с нами',
+      'contact-sub':'Ответим в течение 1–2 рабочих дней или звоните, потому что <span class="hl">отвечаем каждый день</span>.',
+      'partners-label':'Партнеры',
+      'val-1-t':'Честность','val-1-p':'Цены и условия всегда согласовываем до начала работ.',
+      'val-2-t':'Пунктуальность','val-2-p':'Приезжаем вовремя и придерживаемся согласованного плана.',
+      'val-3-t':'Ответственный подход','val-3-p':'Бережно относимся к каждому клиенту, вещам и помещениям.',
+      'chat-hint-text':'Спросить KLB','chat-head-title':'KLB AI ассистент','chat-head-sub':'Мгновенные ответы 24/7',
+      'chat-welcome':'Здравствуйте! Я AI ассистент KLB. Выберите популярный вопрос или напишите свой.',
+      'chip-price':'Примерная цена','chip-hours':'График работы','chip-callback':'Обратный звонок','chip-public':'Переезд учреждений',
+      'chat-send':'Отправить','cookie-text':'Этот сайт использует cookies для улучшения работы и аналитики. Продолжая пользоваться сайтом, вы соглашаетесь на использование cookies.',
+      'cookie-accept':'Согласен','cookie-decline':'Не согласен'
+    },
+    placeholder: {'chat-text':'Напишите вопрос...','hq-phone':'+371 XX XXX XXX'},
+    replies: {
+      price:'Для точной цены отправьте адрес, этаж и примерный объем. Или звоните +371 26 414 900.',
+      hours:'Работаем каждый день, 7 дней в неделю. Можем согласовать и срочные работы.',
+      callback:'Оставьте телефон в форме “Быстрый запрос” или звоните +371 26 414 900.',
+      public:'Да, выполняем переезды учреждений и госзаказы с согласованным графиком и документированным процессом.',
+      services:'Да, выполняем переезды, услуги грузчиков, доставку мебели и вывоз отходов по всей Латвии.',
+      default:'Спасибо за сообщение. Для точного предложения оставьте телефон или звоните +371 26 414 900.'
+    },
+    quickQ: {price:'Какая примерная цена?',hours:'Работаете в выходные?',callback:'Как заказать обратный звонок?',public:'Делаете переезд госучреждений?'}
+  },
+  en: {
+    text: {
+      'nav-about':'About','nav-services':'Services','nav-why':'Advantages','nav-contact':'Contact',
+      'mnav-about':'About','mnav-services':'Services','mnav-why':'Advantages','mnav-contact':'Contact',
+      'hero-tag':'Transport services · Riga & all Latvia',
+      'hero-title':'Move without<br>stress with <em>KLB</em>',
+      'hero-lead':'Over <span class="hl">11 years of experience</span> in moving, furniture delivery and loader services. We also handle <span class="hl">public sector and institution relocations</span>.',
+      'hero-btn-quote':'Request price','hero-btn-all':'All services','hero-widget-title':'Quick request in 15 minutes','hero-widget-btn':'Request callback',
+      'hero-chip-title':'Fast arrival','hero-chip-text':'In Riga and nearby areas, often the same day.',
+      'hero-stat-1':'Years of experience','hero-stat-2':'Completed jobs','hero-stat-3':'Days per week',
+      'svc-tag':'Services','svc-title':'What we do','svc-sub':'From small furniture delivery to full office relocation, including <span class="hl">institutional and public sector moves</span>, with clear pricing in advance.',
+      'svc-c1-t':'Moving service','svc-c1-p':'Full or partial service. We help pack, load, transport and carry items into the new location.','svc-c1-s':'Apartments · offices · warehouses',
+      'svc-c2-t':'Home appliance delivery','svc-c2-p':'Careful transport and delivery of home appliances. We inspect item condition together with the client on delivery.','svc-c2-s':'Fridges · washing machines · stoves',
+      'svc-c3-t':'Furniture delivery and carrying','svc-c3-p':'Any type of furniture for home or office. We carefully carry items to the specified place.','svc-c3-s':'Including stair carrying',
+      'svc-c4-t':'Waste removal','svc-c4-p':'Construction and other waste removal — one-time or regular by contract. Fast and safe.','svc-c4-s':'With loading included',
+      'svc-c5-t':'Loader service','svc-c5-p':'Loading and unloading as an add-on service or separately. Strong and reliable team.','svc-c5-s':'Flexible crew size',
+      'svc-c6-t':'Office relocation','svc-c6-p':'Relocation of company equipment and furniture with minimal downtime. Also building material delivery.','svc-c6-s':'Step-by-step planning',
+      'flow-tag':'Process','flow-title':'From call to delivery without extra steps','flow-sub':'A clear process so clients always know what happens next and how much it costs.',
+      'flow-c1-t':'Request','flow-c1-p':'Share address, floor, estimated volume and preferred date.',
+      'flow-c2-t':'Offer','flow-c2-p':'We confirm price, scope and crew setup before work starts.',
+      'flow-c3-t':'Execution','flow-c3-p':'Loading, transport and carrying are done according to plan and with care.',
+      'flow-c4-t':'Handover','flow-c4-p':'We verify the result together on-site and close the job with no surprises.',
+      'about-tag':'About','about-title':'SIA KLB Transport — your trusted partner',
+      'about-p1':'We are a specialized transport company with more than 11 years of experience. We mainly operate in Riga, but serve all of Latvia.',
+      'about-p2':'If your required service is not listed, <span class="hl">we will find a custom solution</span> for your case.',
+      'about-li1':'Delivery includes carrying items upstairs to the specified room','about-li2':'Joint cargo inspection with the client after delivery',
+      'about-li3':'Execution time: 1–2 days or by agreement','about-li4':'We work 7 days a week, including holidays',
+      'about-li5':'Dedicated solutions for institution moves and public contracts','about-call-btn':'Call now',
+      'proof-tag':'KLB approach','proof-title':'A team focused not only on transport, but on results',
+      'proof-main-title':'More than “from point A to point B”','proof-main-p':'We plan the sequence, adapt the crew to the site, and remove risks in advance that usually cause delays or extra costs.',
+      'proof-i1-t':'Before start','proof-i1-p':'Clear timing and work scope agreed upfront.',
+      'proof-i2-t':'On site','proof-i2-p':'Cargo safety and precise carrying into rooms.',
+      'proof-i3-t':'Communication','proof-i3-p':'Fast updates on status and arrival.',
+      'proof-i4-t':'Final check','proof-i4-p':'Joint result check on site.',
+      'proof-kpi-1':'Completed jobs','proof-kpi-2':'Years in industry','proof-kpi-3':'Work every week',
+      'widgets-tag':'Interactive tools','widgets-title':'Estimate your cost and get answers instantly',
+      'widgets-sub':'Like competitor sites with instant calculators, you can quickly model an estimated price and review common questions.',
+      'calc-title':'Mini price calculator','calc-label-service':'Service','calc-label-loaders':'Loaders','calc-floor-label':'Floor','calc-distance-label':'Distance (km)',
+      'hq-opt-0':'Service','hq-opt-1':'Moving service','hq-opt-2':'Furniture delivery','hq-opt-3':'Waste removal','hq-opt-4':'Loader service',
+      'calc-opt-service-1':'Moving service','calc-opt-service-2':'Furniture delivery','calc-opt-service-3':'Waste removal','calc-opt-service-4':'Loader service',
+      'calc-opt-loader-0':'Not needed','calc-opt-loader-1':'1 loader','calc-opt-loader-2':'2 loaders',
+      'calc-note':'Estimated price. We provide an exact quote after address and volume details.',
+      'stats-head':'Today availability','stats-morning':'Morning slots','stats-afternoon':'Afternoon','stats-evening':'Evening',
+      'faq-head':'Frequently asked questions','faq-q1':'Do you work on weekends? <span class="sym">+</span>','faq-a1':'Yes, we work 7 days a week, including holidays by agreement.',
+      'faq-q2':'Do you carry items upstairs? <span class="sym">+</span>','faq-a2':'Yes, carrying to the specified room is one of our core services.',
+      'faq-q3':'How fast can you arrive? <span class="sym">+</span>','faq-a3':'In Riga we can often arrive the same day, depending on schedule availability.',
+      'why-tag':'Why us','why-title':'Reliability that works',
+      'why-c1-t':'11+ years of experience','why-c1-p':'We have completed more than 1500 jobs. We know how to handle heavy, fragile and unusual items.',
+      'why-c2-t':'7 days a week','why-c2-p':'We work on weekends and holidays too. Call any time — we will answer your questions.',
+      'why-c3-t':'Fair pricing','why-c3-p':'We agree the price before work starts. No hidden fees — you pay only for completed work.',
+      'why-c4-t':'Public institution moves','why-c4-p':'We provide institution and public sector relocations with precise planning and deadline control.',
+      'why-c5-t':'Careful handling','why-c5-p':'Every item is transported with maximum care. After delivery we inspect cargo condition together.',
+      'why-c6-t':'Individual approach','why-c6-p':'No typical task? No problem. We find the best solution and timing for each client.',
+      'contact-tag':'Contact','contact-title':'Get in touch',
+      'contact-sub':'We reply in 1–2 business days, or call us directly since <span class="hl">we answer every day</span>.',
+      'partners-label':'Partners',
+      'val-1-t':'Honesty','val-1-p':'We always agree on pricing and terms before work starts.',
+      'val-2-t':'Punctuality','val-2-p':'We arrive on time and stick to the agreed work plan.',
+      'val-3-t':'Responsible attitude','val-3-p':'We treat every client, item and space with care.',
+      'chat-hint-text':'Ask KLB','chat-head-title':'KLB AI assistant','chat-head-sub':'Instant replies 24/7',
+      'chat-welcome':'Hi! I am KLB AI assistant. Pick a common question or type your own.',
+      'chip-price':'Estimated price','chip-hours':'Working hours','chip-callback':'Callback','chip-public':'Institution moves',
+      'chat-send':'Send','cookie-text':'This site uses cookies to improve performance and analytics. By continuing to use the site, you agree to cookie usage.',
+      'cookie-accept':'Accept','cookie-decline':'Decline'
+    },
+    placeholder: {'chat-text':'Type your question...','hq-phone':'+371 XX XXX XXX'},
+    replies: {
+      price:'For an exact quote, send address, floor and estimated volume. Or call +371 26 414 900.',
+      hours:'We work every day, 7 days a week. Urgent jobs can also be arranged.',
+      callback:'Leave your phone in the “Quick request” form, or call +371 26 414 900.',
+      public:'Yes, we handle institution relocations and public contracts with scheduled and documented workflow.',
+      services:'Yes, we provide moving, loaders, furniture delivery and waste removal across Latvia.',
+      default:'Thanks for your message. For an exact offer, leave your phone number or call +371 26 414 900.'
+    },
+    quickQ: {price:'What is the estimated price?',hours:'Do you work on weekends?',callback:'How can I request a callback?',public:'Do you handle public institutions?'}
+  }
+};
+
+function setLangText(id, value) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (value.includes('<') || value.includes('&')) el.innerHTML = value;
+  else el.textContent = value;
+}
+
+function applyLanguage(lang) {
+  const t = i18n[lang] || i18n.lv;
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  langButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+  Object.entries(t.text).forEach(([id, val]) => setLangText(id, val));
+  Object.entries(t.placeholder).forEach(([id, val]) => {
+    const el = document.getElementById(id);
+    if (el) el.placeholder = val;
+  });
+  localStorage.setItem('klb_lang', lang);
+}
+
+langButtons.forEach(btn => btn.addEventListener('click', () => applyLanguage(btn.dataset.lang)));
+logo.src = 'img/logo_klb-01-white.svg';
+
+window.addEventListener('scroll', () => {
+  const on = window.scrollY > 50;
+  hdr.classList.toggle('on', on);
+}, {passive: true});
+
+const sections = navLinks
+  .map(link => document.querySelector(link.getAttribute('href')))
+  .filter(Boolean);
+function setActiveMenu() {
+  const y = window.scrollY + 140;
+  let active = sections[0]?.id || '';
+  sections.forEach(sec => { if (y >= sec.offsetTop) active = sec.id; });
+  navLinks.forEach(link => {
+    const match = link.getAttribute('href') === `#${active}`;
+    link.classList.toggle('active', match && !link.classList.contains('nav-cta'));
+  });
+}
+setActiveMenu();
+window.addEventListener('scroll', setActiveMenu, {passive: true});
+
+// ── MOBILE NAV ────────────────────────────────
+const brg = document.getElementById('brg');
+const mnav = document.getElementById('mnav');
+let open = false;
+brg.addEventListener('click', () => {
+  open = !open;
+  mnav.style.display = open ? 'flex' : 'none';
+});
+mnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  open = false; mnav.style.display = 'none';
+}));
+
+// ── FADE IN ───────────────────────────────────
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, {threshold: .12});
+document.querySelectorAll('.fd').forEach(el => io.observe(el));
+
+// ── COUNTERS ─────────────────────────────────
+function runCounter(el) {
+  if (el._done) return; el._done = true;
+  const target = +el.dataset.t, dur = 1500, start = performance.now();
+  const tick = now => {
+    const p = Math.min((now - start) / dur, 1);
+    el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target);
+    if (p < 1) requestAnimationFrame(tick); else el.textContent = target;
+  };
+  requestAnimationFrame(tick);
+}
+// hero counters on load
+setTimeout(() => document.querySelectorAll('.ctr').forEach(runCounter), 600);
+
+// ── SCROLL TOP ───────────────────────────────
+const topBtn = document.getElementById('top');
+window.addEventListener('scroll', () => {
+  topBtn.classList.toggle('show', window.scrollY > 500);
+}, {passive: true});
+topBtn.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+
+// ── SMOOTH ANCHORS ───────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const el = document.querySelector(a.getAttribute('href'));
+    if (el) { e.preventDefault(); el.scrollIntoView({behavior: 'smooth'}); }
+  });
+});
+
+// ── FORM ─────────────────────────────────────
+function sendForm(e) {
+  e.preventDefault();
+  const msg = document.getElementById('fmsg');
+  msg.style.display = 'block';
+  msg.style.color = '#2a8a2a';
+  msg.textContent = '✓ Paldies! Mēs ar jums sazināsimies tuvākajā laikā.';
+  e.target.reset();
+}
+
+// ── HERO QUICK FORM ─────────────────────────
+const heroQuote = document.getElementById('hero-quote');
+if (heroQuote) {
+  heroQuote.addEventListener('submit', e => {
+    e.preventDefault();
+    const msg = document.getElementById('hq-msg');
+    const successMsg = {
+      lv: 'Paldies! Atzvanīsim jums 15 min laikā.',
+      ru: 'Спасибо! Перезвоним вам в течение 15 минут.',
+      en: 'Thanks! We will call you back within 15 minutes.'
+    };
+    msg.textContent = successMsg[currentLang] || successMsg.lv;
+    heroQuote.reset();
+  });
+}
+
+// ── WIDGET CALCULATOR ───────────────────────
+const calcService = document.getElementById('calc-service');
+const calcLoaders = document.getElementById('calc-loaders');
+const calcFloor = document.getElementById('calc-floor');
+const calcDistance = document.getElementById('calc-distance');
+const floorVal = document.getElementById('floor-val');
+const distanceVal = document.getElementById('distance-val');
+const calcPrice = document.getElementById('calc-price');
+
+function updateCalc() {
+  if (!calcService) return;
+  const base = +calcService.value;
+  const loaders = +calcLoaders.value;
+  const floor = +calcFloor.value * 3;
+  const distance = +calcDistance.value * 1.8;
+  const total = Math.round(base + loaders + floor + distance);
+  floorVal.textContent = calcFloor.value;
+  distanceVal.textContent = calcDistance.value;
+  calcPrice.textContent = `€${total}`;
+}
+[calcService, calcLoaders, calcFloor, calcDistance].forEach(el => {
+  if (el) el.addEventListener('input', updateCalc);
+});
+updateCalc();
+
+// ── FAQ ACCORDION ───────────────────────────
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    item.classList.toggle('open');
+    btn.querySelector('.sym').textContent = item.classList.contains('open') ? '−' : '+';
+  });
+});
+
+// ── COOKIES ──────────────────────────────────
+const cookie = document.getElementById('cookie');
+const cookieBackdrop = document.getElementById('cookie-backdrop');
+const cookieKey = 'klb_cookie_consent';
+function setCookieMode(visible) {
+  const chatToggleEl = document.getElementById('chat-toggle');
+  const chatHintEl = document.querySelector('.chat-hint');
+  const chatboxEl = document.getElementById('chatbox');
+  cookie.style.display = visible ? 'block' : 'none';
+  cookieBackdrop.style.display = visible ? 'block' : 'none';
+  if (chatToggleEl) chatToggleEl.style.display = visible ? 'none' : 'flex';
+  if (chatHintEl) chatHintEl.style.display = visible ? 'none' : '';
+  if (visible && chatboxEl) chatboxEl.style.display = 'none';
+}
+function hideCookie() {
+  setCookieMode(false);
+}
+if (!localStorage.getItem(cookieKey)) {
+  setCookieMode(true);
+} else {
+  setCookieMode(false);
+}
+document.getElementById('cookie-accept').addEventListener('click', () => {
+  localStorage.setItem(cookieKey, 'accepted');
+  hideCookie();
+});
+document.getElementById('cookie-decline').addEventListener('click', () => {
+  localStorage.setItem(cookieKey, 'declined');
+  hideCookie();
+});
+
+// ── CHATBOT ──────────────────────────────────
+const chatToggle = document.getElementById('chat-toggle');
+const chatClose = document.getElementById('chat-close');
+const chatbox = document.getElementById('chatbox');
+const chatHint = document.querySelector('.chat-hint');
+const chatLog = document.getElementById('chat-log');
+const chatForm = document.getElementById('chat-form');
+const chatText = document.getElementById('chat-text');
+const chatQuick = document.getElementById('chat-quick');
+
+function addChat(text, who) {
+  const div = document.createElement('div');
+  div.className = `msg ${who}`;
+  div.textContent = text;
+  chatLog.appendChild(div);
+  chatLog.scrollTop = chatLog.scrollHeight;
+}
+
+function botReply(input) {
+  const t = input.toLowerCase();
+  const r = (i18n[currentLang] || i18n.lv).replies;
+  if (/(cena|izmaks|cik|price|cost|цена|стоим)/.test(t)) return r.price;
+  if (/(laiks|strād|darba|brīvdien|hours|weekend|время|выходн)/.test(t)) return r.hours;
+  if (/(atzvan|atpakaļ|sazin|callback|call back|перезвон|обратн)/.test(t)) return r.callback;
+  if (/(iestād|valsts|publisk|institution|public|гос|учрежден)/.test(t)) return r.public;
+  if (/(pārvāk|krāvē|atkrit|moving|load|delivery|переезд|груз)/.test(t)) return r.services;
+  return r.default;
+}
+
+chatToggle.addEventListener('click', () => {
+  chatbox.style.display = chatbox.style.display === 'block' ? 'none' : 'block';
+  if (chatHint) chatHint.style.display = chatbox.style.display === 'block' ? 'none' : 'inline-flex';
+});
+chatClose.addEventListener('click', () => {
+  chatbox.style.display = 'none';
+  if (chatHint) chatHint.style.display = 'inline-flex';
+});
+chatForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const text = chatText.value.trim();
+  if (!text) return;
+  addChat(text, 'user');
+  chatText.value = '';
+  setTimeout(() => addChat(botReply(text), 'bot'), 400);
+});
+if (chatQuick) {
+  chatQuick.querySelectorAll('.qchip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const intent = btn.dataset.intent;
+      const q = (i18n[currentLang] || i18n.lv).quickQ[intent] || btn.textContent.trim();
+      addChat(q, 'user');
+      const reply = (i18n[currentLang] || i18n.lv).replies[intent] || botReply(q);
+      setTimeout(() => addChat(reply, 'bot'), 320);
+    });
+  });
+}
+applyLanguage(localStorage.getItem('klb_lang') || 'lv');
+</script>
+</body>
+</html>
