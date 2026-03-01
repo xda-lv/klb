@@ -1,6 +1,19 @@
 .DS_Store
 
+# Security & Git Hygiene — backend/worker artifacts never in GitHub
+automation/
+**/automation/
+wrangler.toml
+wrangler.json
+wrangler.jsonc
+.wrangler/
+node_modules/
+.env
+.env.*
+
 # Workspace-only AI docs
 .ai/
 context.md
 CLAUDE.md
+ARCHITECTURE.md
+OPERATIONS.md
